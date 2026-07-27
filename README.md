@@ -4,7 +4,7 @@ A single-page family guide to Portugal for three small travellers (ages 1, 4 and
 **Lisbon · Nazaré · Porto · the Douro · the eastern Algarve**. Route, seasons, anchor
 activities, where to stay and eat, traditions, and practical notes for a UK family.
 
-**Live site:** https://jsgoecke.github.io/portugal-recommendations/
+**Live site:** https://portugal-recommendations.goecke.io/
 
 ## What's here
 
