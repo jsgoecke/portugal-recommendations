@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent); text-decoration: underline; }
@@ -25,6 +25,44 @@
   details > summary { list-style: none; cursor: pointer; }
   details > summary::-webkit-details-marker { display: none; }
   details[open] > summary > span[data-plus] { transform: rotate(45deg); }
+
+  /* ── Responsive layer ─────────────────────────────────────────────────────
+     The page's layout is set with inline styles, so these overrides target the
+     fixed-track grid patterns by attribute and collapse them on small screens.
+     !important is required to win over the inline `style` attribute. */
+  @media (max-width: 720px) {
+    /* Collapse the fixed two-column layouts (side-rail + content, image sidebars) */
+    [style*="grid-template-columns:200px 1fr"],
+    [style*="grid-template-columns:1fr 260px"],
+    [style*="grid-template-columns:1fr 300px"],
+    [style*="grid-template-columns:1fr auto"] {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    /* Side-rail labels stop sticking and read as eyebrows above their content */
+    [style*="position:sticky;top:80px"] { position: static !important; }
+    /* Nav becomes a single horizontally-scrollable row instead of a tall wrap */
+    nav > div { gap: 12px !important; }
+    nav [style*="flex-wrap:wrap"] {
+      flex-wrap: nowrap !important; overflow-x: auto; min-width: 0;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    nav [style*="flex-wrap:wrap"]::-webkit-scrollbar { display: none; }
+    nav [style*="flex-wrap:wrap"] a { white-space: nowrap; flex: none; }
+  }
+  @media (max-width: 600px) {
+    /* Tighter page gutters on phones */
+    [style*="max-width:1240px"] { padding-left: 20px !important; padding-right: 20px !important; }
+    /* Wide card grids to a single column so nothing overflows a narrow screen */
+    [style*="minmax(300px,1fr)"],
+    [style*="minmax(280px,1fr)"] { grid-template-columns: 1fr !important; }
+    /* Roomy callout blocks shed some inner padding */
+    [style*="padding:36px 40px"] { padding: 24px 20px !important; }
+    /* Route table: drop the fixed column widths and tighten spacing */
+    .table { font-size: 13px; }
+    .table th, .table td { padding: 8px 6px; }
+    [style*="width:96px"], [style*="width:220px"] { width: auto !important; }
+  }
 </style>
 </head>
 <body>
