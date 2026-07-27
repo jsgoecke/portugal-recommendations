@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Scan the page so only the utilities actually used are emitted. */
+@source "./index.html";
+
+/* ── Modernist design tokens ──────────────────────────────────────────────
+   The custom design system's tokens, mapped into Tailwind's theme so they
+   drive utilities directly: e.g. bg-bg, text-accent, text-neutral-700,
+   border-divider, font-heading. */
+@theme {
+  --font-heading: "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #ec3013;
+  --color-accent-2: #e15b47;
+  --color-divider: rgba(32, 30, 29, 0.4);
+
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff2ef;
+  --color-accent-200: #ffe0d9;
+  --color-accent-300: #ffc4b8;
+  --color-accent-400: #ff9783;
+  --color-accent-500: #ff563c;
+  --color-accent-600: #dd2b0f;
+  --color-accent-700: #ae1800;
+  --color-accent-800: #7c1405;
+  --color-accent-900: #4d170e;
+}
+
+/* Smooth in-page scrolling; offset anchor targets below the sticky nav. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Links inherit the page's accent treatment (as the old styles.css did). */
+a {
+  color: var(--color-accent-700);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+::selection {
+  background: var(--color-accent-200);
+}
+
+/* Collapsible <details> chrome for the Practical section. */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] > summary > span[data-plus] {
+  transform: rotate(45deg);
+}
