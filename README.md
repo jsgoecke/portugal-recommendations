@@ -15,7 +15,7 @@ activities, where to stay and eat, traditions, and practical notes for a UK fami
 
 The page is plain HTML and CSS — no build step, no JavaScript, no dependencies beyond
 the Archivo web font (loaded from Google Fonts) and photography hot-linked from
-Wikimedia Commons (plus one book-cover image hot-linked from a retailer).
+Wikimedia Commons.
 
 ## Running locally
 
