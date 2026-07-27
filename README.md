@@ -40,7 +40,11 @@ npm install            # first time only
 npm run build:css      # writes a minified tailwind.css
 ```
 
-Commit the regenerated `tailwind.css` alongside your changes.
+`build:css` also stamps a content hash into the stylesheet link in
+`index.html` (`tailwind.css?v=…`) so browsers and Cloudflare never serve a
+stale stylesheet. Commit the regenerated `tailwind.css` **and** the updated
+`index.html` together. The `_headers` file additionally tells Cloudflare
+Pages to revalidate on every request.
 
 ## Deploying to GitHub Pages
 

@@ -1,0 +1,5 @@
+# Cloudflare Pages headers. Always revalidate so a new deploy is never
+# masked by a stale cached HTML/CSS file. The stylesheet URL also carries a
+# content hash (?v=…) that changes whenever the CSS changes.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
