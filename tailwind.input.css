@@ -39,34 +39,47 @@
   --color-accent-900: #4d170e;
 }
 
-/* Smooth in-page scrolling; offset anchor targets below the sticky nav. */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
-}
+/* Base-layer element styles. Kept inside @layer base so Tailwind utility
+   classes (e.g. text-bg on a button-styled link) still win over them. */
+@layer base {
+  /* Smooth in-page scrolling; offset anchor targets below the sticky nav. */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
 
-/* Links inherit the page's accent treatment (as the old styles.css did). */
-a {
-  color: var(--color-accent-700);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--color-accent);
-  text-decoration: underline;
-}
+  /* Links read as dark, underlined text — readable on the light theme and
+     clearly clickable, without borrowing the accent red. */
+  a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-color: color-mix(in srgb, var(--color-text) 45%, transparent);
+  }
+  a:hover {
+    color: var(--color-text);
+    text-decoration-color: currentColor;
+  }
+  /* Navigation links are not underlined (they carry their own styling). */
+  nav a,
+  nav a:hover {
+    text-decoration: none;
+  }
 
-::selection {
-  background: var(--color-accent-200);
-}
+  ::selection {
+    background: var(--color-accent-200);
+  }
 
-/* Collapsible <details> chrome for the Practical section. */
-details > summary {
-  list-style: none;
-  cursor: pointer;
-}
-details > summary::-webkit-details-marker {
-  display: none;
-}
-details[open] > summary > span[data-plus] {
-  transform: rotate(45deg);
+  /* Collapsible <details> chrome for the Practical section. */
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] > summary > span[data-plus] {
+    transform: rotate(45deg);
+  }
 }
