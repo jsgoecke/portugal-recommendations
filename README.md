@@ -10,21 +10,37 @@ activities, where to stay and eat, traditions, and practical notes for a UK fami
 
 | File | Purpose |
 |------|---------|
-| `index.html` | The complete guide — one self-contained page. |
-| `styles.css` | The "Modernist" design system: tokens (colour ramps, type, spacing) and component classes. |
+| `index.html` | The complete guide — one page, styled entirely with Tailwind utility classes. |
+| `tailwind.css` | The generated stylesheet the page loads. Built from the input below; committed so the site needs no build step to *serve*. |
+| `tailwind.input.css` | Tailwind entry point. Maps the "Modernist" design tokens (colour ramps, fonts) into the Tailwind theme and holds the handful of base rules. |
+| `package.json` | Dev-only Tailwind CLI and the `build:css` script. |
 
-The page is plain HTML and CSS — no build step, no JavaScript, no dependencies beyond
-the Archivo web font (loaded from Google Fonts) and photography hot-linked from
-Wikimedia Commons.
+The page has **no runtime JavaScript** and no runtime dependencies beyond the Archivo web
+font (loaded from Google Fonts) and photography hot-linked from Wikimedia Commons. Styling
+is Tailwind CSS v4, compiled locally into `tailwind.css` — there is no build step in the
+deploy; the compiled file is committed and served as-is.
 
 ## Running locally
 
-Just open `index.html` in a browser, or serve the folder:
+The compiled `tailwind.css` is committed, so you can just open `index.html` in a browser,
+or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
+
+## Editing the styles
+
+Styling lives in the Tailwind utility classes on `index.html` and the theme tokens in
+`tailwind.input.css`. After changing either, regenerate the stylesheet:
+
+```bash
+npm install            # first time only
+npm run build:css      # writes a minified tailwind.css
+```
+
+Commit the regenerated `tailwind.css` alongside your changes.
 
 ## Deploying to GitHub Pages
 

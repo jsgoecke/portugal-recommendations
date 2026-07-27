@@ -12,284 +12,236 @@
 <meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Centro-Historico-do-Porto-e-Ponte-Luis-I-20090505.JPG?width=1200">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f3f2f2'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23ec3013'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
-  a { color: var(--color-accent-700); text-decoration: none; }
-  a:hover { color: var(--color-accent); text-decoration: underline; }
-  ::selection { background: var(--color-accent-200); }
-  details > summary { list-style: none; cursor: pointer; }
-  details > summary::-webkit-details-marker { display: none; }
-  details[open] > summary > span[data-plus] { transform: rotate(45deg); }
-
-  /* ── Responsive layer ─────────────────────────────────────────────────────
-     The page's layout is set with inline styles, so these overrides target the
-     fixed-track grid patterns by attribute and collapse them on small screens.
-     !important is required to win over the inline `style` attribute. */
-  @media (max-width: 720px) {
-    /* Collapse the fixed two-column layouts (side-rail + content, image sidebars) */
-    [style*="grid-template-columns:200px 1fr"],
-    [style*="grid-template-columns:1fr 260px"],
-    [style*="grid-template-columns:1fr 300px"],
-    [style*="grid-template-columns:1fr auto"] {
-      grid-template-columns: 1fr !important;
-      gap: 20px !important;
-    }
-    /* Side-rail labels stop sticking and read as eyebrows above their content */
-    [style*="position:sticky;top:80px"] { position: static !important; }
-    /* Nav becomes a single horizontally-scrollable row instead of a tall wrap */
-    nav > div { gap: 12px !important; }
-    nav [style*="flex-wrap:wrap"] {
-      flex-wrap: nowrap !important; overflow-x: auto; min-width: 0;
-      -webkit-overflow-scrolling: touch; scrollbar-width: none;
-    }
-    nav [style*="flex-wrap:wrap"]::-webkit-scrollbar { display: none; }
-    nav [style*="flex-wrap:wrap"] a { white-space: nowrap; flex: none; }
-  }
-  @media (max-width: 600px) {
-    /* Tighter page gutters on phones */
-    [style*="max-width:1240px"] { padding-left: 20px !important; padding-right: 20px !important; }
-    /* Wide card grids to a single column so nothing overflows a narrow screen */
-    [style*="minmax(300px,1fr)"],
-    [style*="minmax(280px,1fr)"] { grid-template-columns: 1fr !important; }
-    /* Roomy callout blocks shed some inner padding */
-    [style*="padding:36px 40px"] { padding: 24px 20px !important; }
-    /* Route table: drop the fixed column widths and tighten spacing */
-    .table { font-size: 13px; }
-    .table th, .table td { padding: 8px 6px; }
-    [style*="width:96px"], [style*="width:220px"] { width: auto !important; }
-  }
-</style>
 </head>
-<body>
-<div style="background:var(--color-bg)">
+<body class="bg-bg text-text font-body m-0">
+<div class="bg-bg">
 
-<nav style="position:sticky;top:0;z-index:20;background:var(--color-bg);border-bottom:2px solid var(--color-text)">
-  <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:flex;align-items:stretch;justify-content:space-between;gap:24px">
-    <a href="#top" style="display:flex;align-items:center;gap:10px;padding:14px 0;color:var(--color-text);font-weight:800;letter-spacing:-0.01em;font-size:15px">
-      <span style="display:block;width:14px;height:14px;background:var(--color-accent)"></span>
+<nav class="sticky top-0 z-20 bg-bg border-b-2 border-text">
+  <div class="max-w-[1240px] mx-auto px-5 sm:px-8 flex items-stretch justify-between gap-3 md:gap-6">
+    <a href="#top" class="flex items-center gap-2.5 py-3.5 text-text font-extrabold tracking-[-0.01em] text-[15px]">
+      <span class="block w-3.5 h-3.5 bg-accent"></span>
       Portugal with the Family
     </a>
-    <div style="display:flex;align-items:center;gap:2px;flex-wrap:wrap;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600">
-      <a href="#route" style="padding:8px 10px;color:var(--color-neutral-800)">Route</a>
-      <a href="#season" style="padding:8px 10px;color:var(--color-neutral-800)">When to go</a>
-      <a href="#lisbon" style="padding:8px 10px;color:var(--color-neutral-800)">Lisbon</a>
-      <a href="#nazare" style="padding:8px 10px;color:var(--color-neutral-800)">Nazaré</a>
-      <a href="#porto" style="padding:8px 10px;color:var(--color-neutral-800)">Porto</a>
-      <a href="#douro" style="padding:8px 10px;color:var(--color-neutral-800)">Douro</a>
-      <a href="#algarve" style="padding:8px 10px;color:var(--color-neutral-800)">Algarve</a>
-      <a href="#traditions" style="padding:8px 10px;color:var(--color-neutral-800)">Traditions</a>
-      <a href="#practical" style="padding:8px 10px;color:var(--color-neutral-800)">Practical</a>
+    <div class="flex items-center gap-0.5 overflow-x-auto md:flex-wrap md:overflow-visible text-xs tracking-[0.12em] uppercase font-semibold [scrollbar-width:none]">
+      <a href="#route" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Route</a>
+      <a href="#season" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">When to go</a>
+      <a href="#lisbon" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Lisbon</a>
+      <a href="#nazare" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Nazaré</a>
+      <a href="#porto" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Porto</a>
+      <a href="#douro" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Douro</a>
+      <a href="#algarve" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Algarve</a>
+      <a href="#traditions" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Traditions</a>
+      <a href="#practical" class="px-2.5 py-2 text-neutral-800 whitespace-nowrap">Practical</a>
     </div>
   </div>
 </nav>
 
-<header id="top" style="max-width:1240px;margin:0 auto;padding:64px 32px 0">
-  <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">A family guide · verified July 2026</div>
-  <h1 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(48px,8.4vw,116px);line-height:0.92;letter-spacing:-0.035em;margin:20px 0 0;max-width:18ch">Portugal with the Family: <span style="color:var(--color-accent)">The Real Thing</span></h1>
-  <p style="font-size:clamp(18px,2vw,24px);line-height:1.4;font-weight:500;margin:28px 0 0;max-width:46ch;color:var(--color-neutral-800);text-wrap:pretty">A guide for one UK family, three small travellers (ages 1, 4 and 6), and a country that loves children.</p>
-  <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Centro-Historico-do-Porto-e-Ponte-Luis-I-20090505.JPG?width=1800" alt="Porto and the Dom Luís I bridge, from Serra do Pilar" loading="lazy" style="width:100%;height:clamp(280px,40vw,520px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Porto and the Dom Luís I bridge, from Serra do Pilar</figcaption></figure>
-  <div style="height:2px;background:var(--color-text);margin:48px 0 0"></div>
+<header id="top" class="max-w-[1240px] mx-auto pt-16 px-5 sm:px-8">
+  <div class="text-xs tracking-[0.18em] uppercase font-bold text-accent-700">A family guide · verified July 2026</div>
+  <h1 class="font-heading font-black text-[clamp(48px,8.4vw,116px)] leading-[0.92] tracking-[-0.035em] mt-5 max-w-[18ch]">Portugal with the Family: <span class="text-accent">The Real Thing</span></h1>
+  <p class="text-[clamp(18px,2vw,24px)] leading-[1.4] font-medium mt-7 max-w-[46ch] text-neutral-800 [text-wrap:pretty]">A guide for one UK family, three small travellers (ages 1, 4 and 6), and a country that loves children.</p>
+  <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Centro-Historico-do-Porto-e-Ponte-Luis-I-20090505.JPG?width=1800" alt="Porto and the Dom Luís I bridge, from Serra do Pilar" loading="lazy" class="w-full h-[clamp(280px,40vw,520px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Porto and the Dom Luís I bridge, from Serra do Pilar</figcaption></figure>
+  <div class="h-0.5 bg-text mt-12"></div>
 </header>
 
-<section id="intro" style="max-width:1240px;margin:0 auto;padding:48px 32px 0">
+<section id="intro" class="max-w-[1240px] mx-auto pt-12 px-5 sm:px-8">
   <h2 class="sr-only">How to use this guide</h2>
-  <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start">
-    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">How to use<br>this guide</div>
+  <div class="grid grid-cols-1 gap-5 items-start md:grid-cols-[200px_1fr] md:gap-12">
+    <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">How to use<br>this guide</div>
     <div>
-      <p style="font-size:22px;line-height:1.5;font-weight:500;margin:0;max-width:60ch;text-wrap:pretty">Portugal is one of the last places in Western Europe where “authentic” isn't a marketing word. Fishermen still mend nets on the quay in Olhão, grandmothers still queue at the municipal market on Saturday morning, and children are not tolerated in restaurants, they are celebrated.</p>
-      <p style="font-size:17px;line-height:1.65;margin:24px 0 0;max-width:66ch;color:var(--color-neutral-800);text-wrap:pretty">Waiters will carry your baby around the dining room. Strangers will ruffle the six-year-old's hair. This is a country built for multigenerational life. Each regional section below covers the same five things: why it's worth your time, what to do with the kids, where to stay, where to eat, and the traditions that make the place what it is.</p>
+      <p class="text-[22px] leading-[1.5] font-medium m-0 max-w-[60ch] [text-wrap:pretty]">Portugal is one of the last places in Western Europe where “authentic” isn't a marketing word. Fishermen still mend nets on the quay in Olhão, grandmothers still queue at the municipal market on Saturday morning, and children are not tolerated in restaurants, they are celebrated.</p>
+      <p class="text-[17px] leading-[1.65] mt-6 max-w-[66ch] text-neutral-800 [text-wrap:pretty]">Waiters will carry your baby around the dining room. Strangers will ruffle the six-year-old's hair. This is a country built for multigenerational life. Each regional section below covers the same five things: why it's worth your time, what to do with the kids, where to stay, where to eat, and the traditions that make the place what it is.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin:48px 0 0;border-top:2px solid var(--color-text)">
-        <a href="#lisbon" style="display:block;padding:20px 20px 24px 0;border-right:1px solid var(--color-divider);color:var(--color-text)">
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">01</div>
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:8px;letter-spacing:-0.01em">Lisbon</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--color-neutral-700);margin-top:6px">The capital, done at toddler pace</div>
+      <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-0 mt-12 border-t-2 border-text">
+        <a href="#lisbon" class="block pt-5 pr-5 pb-6 pl-0 border-r border-divider text-text">
+          <div class="font-heading font-extrabold text-[13px] text-accent">01</div>
+          <div class="font-heading font-extrabold text-[19px] mt-2 tracking-[-0.01em]">Lisbon</div>
+          <div class="text-sm leading-[1.5] text-neutral-700 mt-1.5">The capital, done at toddler pace</div>
         </a>
-        <a href="#nazare" style="display:block;padding:20px 20px 24px;border-right:1px solid var(--color-divider);color:var(--color-text)">
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">02</div>
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:8px;letter-spacing:-0.01em">Nazaré &amp; the Silver Coast</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--color-neutral-700);margin-top:6px">Portugal's most tradition-soaked beach town</div>
+        <a href="#nazare" class="block pt-5 px-5 pb-6 border-r border-divider text-text">
+          <div class="font-heading font-extrabold text-[13px] text-accent">02</div>
+          <div class="font-heading font-extrabold text-[19px] mt-2 tracking-[-0.01em]">Nazaré &amp; the Silver Coast</div>
+          <div class="text-sm leading-[1.5] text-neutral-700 mt-1.5">Portugal's most tradition-soaked beach town</div>
         </a>
-        <a href="#porto" style="display:block;padding:20px 20px 24px;border-right:1px solid var(--color-divider);color:var(--color-text)">
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">03</div>
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:8px;letter-spacing:-0.01em">Porto &amp; the Douro</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--color-neutral-700);margin-top:6px">River city + wine-country home base</div>
+        <a href="#porto" class="block pt-5 px-5 pb-6 border-r border-divider text-text">
+          <div class="font-heading font-extrabold text-[13px] text-accent">03</div>
+          <div class="font-heading font-extrabold text-[19px] mt-2 tracking-[-0.01em]">Porto &amp; the Douro</div>
+          <div class="text-sm leading-[1.5] text-neutral-700 mt-1.5">River city + wine-country home base</div>
         </a>
-        <a href="#algarve" style="display:block;padding:20px 0 24px 20px;color:var(--color-text)">
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">04</div>
-          <div style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin-top:8px;letter-spacing:-0.01em">The Eastern Algarve</div>
-          <div style="font-size:14px;line-height:1.5;color:var(--color-neutral-700);margin-top:6px">Olhão, the Ria Formosa and the barrier islands</div>
+        <a href="#algarve" class="block pt-5 pr-0 pb-6 pl-5 text-text">
+          <div class="font-heading font-extrabold text-[13px] text-accent">04</div>
+          <div class="font-heading font-extrabold text-[19px] mt-2 tracking-[-0.01em]">The Eastern Algarve</div>
+          <div class="text-sm leading-[1.5] text-neutral-700 mt-1.5">Olhão, the Ria Formosa and the barrier islands</div>
         </a>
       </div>
 
-      <div style="border-top:2px solid var(--color-text);margin-top:0;padding-top:32px;display:grid;grid-template-columns:1fr 260px;gap:40px;align-items:start">
+      <div class="border-t-2 border-text mt-0 pt-8 grid grid-cols-1 gap-5 items-start md:grid-cols-[1fr_260px] md:gap-10">
         <div>
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">One book to buy before you fly</div>
-          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-0.02em;margin:12px 0 0">Portugal: The Monocle Handbook</h3>
-          <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0;max-width:62ch;text-wrap:pretty">Monocle / Thames &amp; Hudson, 2023. The best single volume on modern Portugal, practical, beautifully photographed, covering Lisbon, Porto, the Alentejo and the Azores, with picks from elegant palácios to family-run tascas, plus essays on Portuguese visual culture and design. It won't tell you where the playgrounds are (that's this site's job), but it will tell you why Portugal feels the way it does. Buy it, dog-ear it, leave it on the coffee table when you get home.</p>
-          <div style="font-size:13px;letter-spacing:0.06em;color:var(--color-neutral-700);margin-top:16px">ISBN 978-0500978542</div>
+          <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">One book to buy before you fly</div>
+          <h3 class="font-heading font-extrabold text-3xl leading-[1.1] tracking-[-0.02em] mt-3">Portugal: The Monocle Handbook</h3>
+          <p class="text-base leading-[1.6] text-neutral-800 mt-3.5 max-w-[62ch] [text-wrap:pretty]">Monocle / Thames &amp; Hudson, 2023. The best single volume on modern Portugal, practical, beautifully photographed, covering Lisbon, Porto, the Alentejo and the Azores, with picks from elegant palácios to family-run tascas, plus essays on Portuguese visual culture and design. It won't tell you where the playgrounds are (that's this site's job), but it will tell you why Portugal feels the way it does. Buy it, dog-ear it, leave it on the coffee table when you get home.</p>
+          <div class="text-[13px] tracking-[0.06em] text-neutral-700 mt-4">ISBN 978-0500978542</div>
         </div>
-        <figure class="grayscale" style="margin:0;display:grid;gap:10px">
-          <div style="position:relative;width:100%;aspect-ratio:3/4;background:var(--color-bg);border:2px solid var(--color-text);overflow:hidden">
-            <div style="position:absolute;inset:0;padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between">
-              <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:800;color:var(--color-accent)">Monocle</div>
+        <figure class="grayscale contrast-[1.08] m-0 grid gap-2.5">
+          <div class="relative w-full aspect-[3/4] bg-bg border-2 border-text overflow-hidden">
+            <div class="absolute inset-0 py-[22px] px-5 flex flex-col justify-between">
+              <div class="text-[11px] tracking-[0.18em] uppercase font-extrabold text-accent">Monocle</div>
               <div>
-                <div style="font-family:var(--font-heading);font-weight:900;font-size:30px;line-height:0.95;letter-spacing:-0.03em">Portugal</div>
-                <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);margin-top:8px">The Monocle Handbook</div>
+                <div class="font-heading font-black text-3xl leading-[0.95] tracking-[-0.03em]">Portugal</div>
+                <div class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700 mt-2">The Monocle Handbook</div>
               </div>
             </div>
           </div>
-          <figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Monocle / Thames &amp; Hudson, 2023</figcaption>
+          <figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Monocle / Thames &amp; Hudson, 2023</figcaption>
         </figure>
       </div>
     </div>
   </div>
 </section>
 
-<section id="route" style="max-width:1240px;margin:64px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:32px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start">
-    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">The shape<br>of the trip</div>
+<section id="route" class="max-w-[1240px] mt-16 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-8 grid grid-cols-1 gap-5 items-start md:grid-cols-[200px_1fr] md:gap-12">
+    <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">The shape<br>of the trip</div>
     <div>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(34px,4.6vw,58px);line-height:1;letter-spacing:-0.03em;margin:0">Two weeks, five bases, north to south</h2>
-      <p style="font-size:17px;line-height:1.65;margin:20px 0 32px;max-width:60ch;color:var(--color-neutral-800)">A suggested arc that minimises driving with three car seats.</p>
-      <table class="table" style="width:100%">
+      <h2 class="font-heading font-black text-[clamp(34px,4.6vw,58px)] leading-none tracking-[-0.03em] m-0">Two weeks, five bases, north to south</h2>
+      <p class="text-[17px] leading-[1.65] mt-5 mb-8 max-w-[60ch] text-neutral-800">A suggested arc that minimises driving with three car seats.</p>
+      <table class="w-full border-collapse text-[13px] sm:text-sm">
         <thead>
-          <tr><th style="width:96px">Days</th><th style="width:220px">Base</th><th>Notes</th></tr>
+          <tr><th class="w-auto sm:w-24 text-left text-[11px] tracking-[0.08em] uppercase text-text/60 p-2 border-b-2 border-divider">Days</th><th class="w-auto sm:w-[220px] text-left text-[11px] tracking-[0.08em] uppercase text-text/60 p-2 border-b-2 border-divider">Base</th><th class="text-left text-[11px] tracking-[0.08em] uppercase text-text/60 p-2 border-b-2 border-divider">Notes</th></tr>
         </thead>
         <tbody>
-          <tr><td style="font-variant-numeric:tabular-nums">1–3</td><td style="font-weight:700">Lisbon</td><td>Fly into LIS. Flat-neighbourhood base. Oceanário, trams, Belém, pastéis.</td></tr>
-          <tr><td style="font-variant-numeric:tabular-nums">4–5</td><td style="font-weight:700">Nazaré / Silver Coast</td><td>1.5 hrs north of Lisbon. Beach, funicular, dried fish, Óbidos en route.</td></tr>
-          <tr><td style="font-variant-numeric:tabular-nums">6–8</td><td style="font-weight:700">Porto</td><td>2.5 hrs north. Rabelo boats, bridges, tiles, Gaia.</td></tr>
-          <tr><td style="font-variant-numeric:tabular-nums">9–11</td><td style="font-weight:700">Douro Valley</td><td>1.5–2 hrs east of Porto, or the scenic train. The family house. Slow days: river, vineyards, pool.</td></tr>
-          <tr><td style="font-variant-numeric:tabular-nums">12–14</td><td style="font-weight:700">Olhão / Eastern Algarve</td><td>Fly Porto→Faro (55 min). Barrier islands, market, beach. Fly home from Faro (FAO).</td></tr>
+          <tr><td class="p-2 border-b border-divider [font-variant-numeric:tabular-nums]">1–3</td><td class="p-2 border-b border-divider font-bold">Lisbon</td><td class="p-2 border-b border-divider">Fly into LIS. Flat-neighbourhood base. Oceanário, trams, Belém, pastéis.</td></tr>
+          <tr><td class="p-2 border-b border-divider [font-variant-numeric:tabular-nums]">4–5</td><td class="p-2 border-b border-divider font-bold">Nazaré / Silver Coast</td><td class="p-2 border-b border-divider">1.5 hrs north of Lisbon. Beach, funicular, dried fish, Óbidos en route.</td></tr>
+          <tr><td class="p-2 border-b border-divider [font-variant-numeric:tabular-nums]">6–8</td><td class="p-2 border-b border-divider font-bold">Porto</td><td class="p-2 border-b border-divider">2.5 hrs north. Rabelo boats, bridges, tiles, Gaia.</td></tr>
+          <tr><td class="p-2 border-b border-divider [font-variant-numeric:tabular-nums]">9–11</td><td class="p-2 border-b border-divider font-bold">Douro Valley</td><td class="p-2 border-b border-divider">1.5–2 hrs east of Porto, or the scenic train. The family house. Slow days: river, vineyards, pool.</td></tr>
+          <tr><td class="p-2 border-b border-divider [font-variant-numeric:tabular-nums]">12–14</td><td class="p-2 border-b border-divider font-bold">Olhão / Eastern Algarve</td><td class="p-2 border-b border-divider">Fly Porto→Faro (55 min). Barrier islands, market, beach. Fly home from Faro (FAO).</td></tr>
         </tbody>
       </table>
-      <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Alto%20Douro%20Forrester.jpg?width=1800" alt="Baron Forrester’s map of the Douro, 1848" loading="lazy" style="width:100%;height:clamp(200px,24vw,340px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Baron Forrester’s map of the Douro, 1848</figcaption></figure>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-top:32px">
-        <div style="border-top:1px solid var(--color-divider);padding-top:16px">
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">The structural decision</div>
-          <p style="font-size:16px;line-height:1.6;margin:10px 0 0"><strong>Fly the Porto↔Algarve leg.</strong> Five-plus hours on the A1 with a 1-year-old is a self-inflicted wound. Reverse the whole route if flights into Faro work better.</p>
+      <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Alto%20Douro%20Forrester.jpg?width=1800" alt="Baron Forrester’s map of the Douro, 1848" loading="lazy" class="w-full h-[clamp(200px,24vw,340px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Baron Forrester’s map of the Douro, 1848</figcaption></figure>
+      <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 mt-8">
+        <div class="border-t border-divider pt-4">
+          <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">The structural decision</div>
+          <p class="text-base leading-[1.6] mt-2.5"><strong>Fly the Porto↔Algarve leg.</strong> Five-plus hours on the A1 with a 1-year-old is a self-inflicted wound. Reverse the whole route if flights into Faro work better.</p>
         </div>
-        <div style="border-top:1px solid var(--color-divider);padding-top:16px">
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Pace rule for this crew</div>
-          <p style="font-size:16px;line-height:1.6;margin:10px 0 0">One anchor activity per day, done by early afternoon. Portugal's rhythm helps, long lunches, late dinners, and nobody blinks at a pram in a restaurant at 8pm.</p>
+        <div class="border-t border-divider pt-4">
+          <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Pace rule for this crew</div>
+          <p class="text-base leading-[1.6] mt-2.5">One anchor activity per day, done by early afternoon. Portugal's rhythm helps, long lunches, late dinners, and nobody blinks at a pram in a restaurant at 8pm.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="season" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:32px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start">
-    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">When to go</div>
+<section id="season" class="max-w-[1240px] mt-20 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-8 grid grid-cols-1 gap-5 items-start md:grid-cols-[200px_1fr] md:gap-12">
+    <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">When to go</div>
     <div>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(34px,4.6vw,58px);line-height:1;letter-spacing:-0.03em;margin:0">Every time of year has its version of this trip</h2>
-      <p style="font-size:17px;line-height:1.65;margin:20px 0 0;max-width:64ch;color:var(--color-neutral-800);text-wrap:pretty">The route works in any month. What changes is the sea temperature, the crowd, and which festival you walk into. Here is the same fourteen days, season by season.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:36px;border-top:2px solid var(--color-text)">
-        <div style="padding:22px 24px 26px 0;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">March, May</div>
-            
+      <h2 class="font-heading font-black text-[clamp(34px,4.6vw,58px)] leading-none tracking-[-0.03em] m-0">Every time of year has its version of this trip</h2>
+      <p class="text-[17px] leading-[1.65] mt-5 max-w-[64ch] text-neutral-800 [text-wrap:pretty]">The route works in any month. What changes is the sea temperature, the crowd, and which festival you walk into. Here is the same fourteen days, season by season.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-0 mt-9 border-t-2 border-text">
+        <div class="pt-[22px] pr-6 pb-[26px] pl-0 border-r border-divider border-b border-divider">
+          <div class="flex justify-between gap-3 items-baseline">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">March, May</div>
+
           </div>
-          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:10px 0 0;letter-spacing:-0.015em">Spring</h3>
-          <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Wildflowers on the Douro terraces, almond and orange blossom in the Algarve, cities pleasant and half empty. The Atlantic is still cold, so treat this as the sightseeing-and-playground version: Oceanário, trams, market halls, the funicular, boats. Easter week brings processions in every town, and the eastern Algarve lagoon warms first if anyone insists on paddling.</p>
+          <h3 class="font-heading font-extrabold text-[22px] mt-2.5 tracking-[-0.015em]">Spring</h3>
+          <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Wildflowers on the Douro terraces, almond and orange blossom in the Algarve, cities pleasant and half empty. The Atlantic is still cold, so treat this as the sightseeing-and-playground version: Oceanário, trams, market halls, the funicular, boats. Easter week brings processions in every town, and the eastern Algarve lagoon warms first if anyone insists on paddling.</p>
         </div>
-        <div style="padding:22px 24px 26px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">June</div>
-            
+        <div class="pt-[22px] px-6 pb-[26px] border-r border-divider border-b border-divider">
+          <div class="flex justify-between gap-3 items-baseline">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">June</div>
+
           </div>
-          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:10px 0 0;letter-spacing:-0.015em">Festival month</h3>
-          <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The best single month for this family: warm, festive, still short of peak crowds, and the whole country is out in the street for the Santos Populares. Lisbon's Santo António falls on 12 to 13 June, Porto's São João on 23 to 24 June. <a href="#festivals">The festival block</a> has the detail, including which two hours of the evening belong to children.</p>
+          <h3 class="font-heading font-extrabold text-[22px] mt-2.5 tracking-[-0.015em]">Festival month</h3>
+          <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The best single month for this family: warm, festive, still short of peak crowds, and the whole country is out in the street for the Santos Populares. Lisbon's Santo António falls on 12 to 13 June, Porto's São João on 23 to 24 June. <a href="#festivals">The festival block</a> has the detail, including which two hours of the evening belong to children.</p>
         </div>
-        <div style="padding:22px 0 26px 24px;border-bottom:1px solid var(--color-divider)">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">July, August</div>
-            
+        <div class="pt-[22px] pr-0 pb-[26px] pl-6 border-b border-divider">
+          <div class="flex justify-between gap-3 items-baseline">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">July, August</div>
+
           </div>
-          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:10px 0 0;letter-spacing:-0.015em">High summer</h3>
-          <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Hottest and busiest, but it works in the eastern Algarve precisely because the barrier islands absorb crowds that never leave the western resorts, and Armona is empty in the mornings even in August. Book quintas, ferries and restaurants ahead, keep the 1 to 4pm indoor lull, and swim on the lagoon side. Inland Douro afternoons hit the high thirties, so mornings on the river and pool from lunch.</p>
+          <h3 class="font-heading font-extrabold text-[22px] mt-2.5 tracking-[-0.015em]">High summer</h3>
+          <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Hottest and busiest, but it works in the eastern Algarve precisely because the barrier islands absorb crowds that never leave the western resorts, and Armona is empty in the mornings even in August. Book quintas, ferries and restaurants ahead, keep the 1 to 4pm indoor lull, and swim on the lagoon side. Inland Douro afternoons hit the high thirties, so mornings on the river and pool from lunch.</p>
         </div>
-        <div style="padding:22px 24px 26px 0;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">September, October</div>
-            
+        <div class="pt-[22px] pr-6 pb-[26px] pl-0 border-r border-divider border-b border-divider">
+          <div class="flex justify-between gap-3 items-baseline">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">September, October</div>
+
           </div>
-          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:10px 0 0;letter-spacing:-0.015em">Harvest</h3>
-          <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The sea is at its warmest and the crowds have gone home. September is the vindima in the Douro, which is the single most kid-friendly thing the valley does: grape picking, grape stomping barefoot in the lagares at Quinta da Pacheca, everybody fed at long tables. The Historic Douro Train still runs at weekends into October, and Nazaré's first big swells arrive at the end of it.</p>
+          <h3 class="font-heading font-extrabold text-[22px] mt-2.5 tracking-[-0.015em]">Harvest</h3>
+          <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The sea is at its warmest and the crowds have gone home. September is the vindima in the Douro, which is the single most kid-friendly thing the valley does: grape picking, grape stomping barefoot in the lagares at Quinta da Pacheca, everybody fed at long tables. The Historic Douro Train still runs at weekends into October, and Nazaré's first big swells arrive at the end of it.</p>
         </div>
-        <div style="padding:22px 24px 26px;border-bottom:1px solid var(--color-divider)">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">November, February</div>
-            
+        <div class="pt-[22px] px-6 pb-[26px] border-b border-divider">
+          <div class="flex justify-between gap-3 items-baseline">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">November, February</div>
+
           </div>
-          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:10px 0 0;letter-spacing:-0.015em">Winter</h3>
-          <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Mild, wet, cheap and almost tourist-free, with the Algarve reliably the warmest corner of Europe you can fly to directly. This is when Nazaré's giant waves actually break, so October to March is the version of the trip where you stand on the Praia do Norte cliff and watch them. Swap beaches for indoor cards: Oceanário, World of Discoveries, the Pavilhão do Conhecimento, tile-painting workshops, long lunches. Carnival in February, and Christmas markets and lights in both cities in December.</p>
+          <h3 class="font-heading font-extrabold text-[22px] mt-2.5 tracking-[-0.015em]">Winter</h3>
+          <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Mild, wet, cheap and almost tourist-free, with the Algarve reliably the warmest corner of Europe you can fly to directly. This is when Nazaré's giant waves actually break, so October to March is the version of the trip where you stand on the Praia do Norte cliff and watch them. Swap beaches for indoor cards: Oceanário, World of Discoveries, the Pavilhão do Conhecimento, tile-painting workshops, long lunches. Carnival in February, and Christmas markets and lights in both cities in December.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="lisbon" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px">
-    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
-      <span style="font-family:var(--font-heading);font-weight:900;font-size:14px;color:var(--color-accent)">01</span>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,6.4vw,84px);line-height:0.95;letter-spacing:-0.035em;margin:0">Lisbon</h2>
-      <span style="font-size:16px;font-weight:600;color:var(--color-neutral-700)">The capital at toddler pace</span>
+<section id="lisbon" class="max-w-[1240px] mt-20 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6">
+    <div class="flex items-baseline gap-5 flex-wrap">
+      <span class="font-heading font-black text-sm text-accent">01</span>
+      <h2 class="font-heading font-black text-[clamp(40px,6.4vw,84px)] leading-[0.95] tracking-[-0.035em] m-0">Lisbon</h2>
+      <span class="text-base font-semibold text-neutral-700">The capital at toddler pace</span>
     </div>
-    <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;margin-top:32px;align-items:start">
-      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">Why · Do<br>Stay · Eat</div>
+    <div class="grid grid-cols-1 gap-5 mt-8 items-start md:grid-cols-[200px_1fr] md:gap-12">
+      <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">Why · Do<br>Stay · Eat</div>
       <div>
-        <p style="font-size:20px;line-height:1.5;font-weight:500;margin:0;max-width:62ch;text-wrap:pretty">Seven hills, yellow trams, tiled façades, and a river that looks like the sea. Lisbon is genuinely one of Europe's most child-friendly capitals, the caveat is topography.</p>
-        <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);margin:18px 0 0;max-width:66ch;text-wrap:pretty">The hills and cobbles are hard work with a buggy, so base yourselves in the flat part of town (Baixa, Chiado, or along Avenida da Liberdade) and treat Alfama as a visit, not a base. A baby carrier for the 1-year-old plus a buggy for tired 4-year-old legs is the winning kit.</p>
-        <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lisbonne%20tram%2028.JPG?width=1600" alt="Tram 28 on the hill, Lisbon" loading="lazy" style="width:100%;height:clamp(260px,34vw,440px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Tram 28 on the hill, Lisbon</figcaption></figure>
+        <p class="text-xl leading-[1.5] font-medium m-0 max-w-[62ch] [text-wrap:pretty]">Seven hills, yellow trams, tiled façades, and a river that looks like the sea. Lisbon is genuinely one of Europe's most child-friendly capitals, the caveat is topography.</p>
+        <p class="text-[17px] leading-[1.65] text-neutral-800 mt-[18px] max-w-[66ch] [text-wrap:pretty]">The hills and cobbles are hard work with a buggy, so base yourselves in the flat part of town (Baixa, Chiado, or along Avenida da Liberdade) and treat Alfama as a visit, not a base. A baby carrier for the 1-year-old plus a buggy for tired 4-year-old legs is the winning kit.</p>
+        <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lisbonne%20tram%2028.JPG?width=1600" alt="Tram 28 on the hill, Lisbon" loading="lazy" class="w-full h-[clamp(260px,34vw,440px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Tram 28 on the hill, Lisbon</figcaption></figure>
 
-        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700);margin:48px 0 0">The anchor activities</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:16px;border-top:2px solid var(--color-text)">
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Oceanário de Lisboa</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">One of the best aquariums in the world, built around a single vast central tank, sharks, rays, sunfish, with sea otters and penguins around the edges. The single most reliable hit for ages 1–6 in the country. Parque das Nações around it is flat and stacked with family infrastructure: the Telecabine cable car, the Pavilhão do Conhecimento science centre, riverside playgrounds and pram-friendly promenades. A full day without touching a hill.</p>
+        <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700 mt-12">The anchor activities</div>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-0 mt-4 border-t-2 border-text">
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Oceanário de Lisboa</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">One of the best aquariums in the world, built around a single vast central tank, sharks, rays, sunfish, with sea otters and penguins around the edges. The single most reliable hit for ages 1–6 in the country. Parque das Nações around it is flat and stacked with family infrastructure: the Telecabine cable car, the Pavilhão do Conhecimento science centre, riverside playgrounds and pram-friendly promenades. A full day without touching a hill.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Belém</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The flat, spacious riverside district west of the centre. Jerónimos Monastery and the Belém Tower for the adults; wide gardens and promenade for the kids to run. Non-negotiable: warm pastéis de Belém from the original 1837 bakery, dusted with cinnamon, queue for takeaway, eat them in the gardens. The MAAT rooftop is free to climb and toddlers love the ramp.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Belém</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The flat, spacious riverside district west of the centre. Jerónimos Monastery and the Belém Tower for the adults; wide gardens and promenade for the kids to run. Non-negotiable: warm pastéis de Belém from the original 1837 bakery, dusted with cinnamon, queue for takeaway, eat them in the gardens. The MAAT rooftop is free to climb and toddlers love the ramp.</p>
           </div>
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Tram 28, but smarter</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">A genuine thrill for a 4- and 6-year-old, but the full route is packed and pickpocket-y. Ride a short stretch early in the morning, or take Tram 15 to Belém instead, same romance, more space. Alternative with high kid-approval: a tuk-tuk tour, which covers the hills without the meltdown.</p>
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Tram 28, but smarter</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">A genuine thrill for a 4- and 6-year-old, but the full route is packed and pickpocket-y. Ride a short stretch early in the morning, or take Tram 15 to Belém instead, same romance, more space. Alternative with high kid-approval: a tuk-tuk tour, which covers the hills without the meltdown.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Castelo de São Jorge</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Ramparts to patrol, peacocks strutting the grounds, the best view in the city and plenty of space to run. Take a tuk-tuk or taxi up; walk down through Alfama's alleys while the kids are still fresh.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Castelo de São Jorge</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Ramparts to patrol, peacocks strutting the grounds, the best view in the city and plenty of space to run. Take a tuk-tuk or taxi up; walk down through Alfama's alleys while the kids are still fresh.</p>
           </div>
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Time Out Market</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Forty vendors under one roof at Cais do Sodré, everyone eats what they want, nobody has to sit still for long, and it's indoors if the weather turns.</p>
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Time Out Market</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Forty vendors under one roof at Cais do Sodré, everyone eats what they want, nobody has to sit still for long, and it's indoors if the weather turns.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Day trip: Cascais</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Thirty minutes on the coastal train from Cais do Sodré, a scenic ride in itself. An elegant seaside town with a calm, family beach right off the main square: a far easier sand day than hauling out to Sintra's coast. Sintra (Pena Palace) is magical but crowded and hilly; with a 1-year-old, consider it optional, and if you go, arrive at opening and pre-book.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Day trip: Cascais</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Thirty minutes on the coastal train from Cais do Sodré, a scenic ride in itself. An elegant seaside town with a calm, family beach right off the main square: a far easier sand day than hauling out to Sintra's coast. Sintra (Pena Palace) is magical but crowded and hilly; with a 1-year-old, consider it optional, and if you go, arrive at opening and pre-book.</p>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px">
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-10">
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Where to stay</div>
-            <ul style="margin:14px 0 0;padding:0;list-style:none;display:grid;gap:14px">
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-accent);padding-left:14px"><strong style="color:var(--color-text)">Martinhal Lisbon Chiado Family Suites</strong>, the gold standard. Apartments with kitchens, a proper kids' club including evenings, and a baby concierge that pre-stocks nappies, sterilisers and potties. Expensive; worth it with three under seven.</li>
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-neutral-300);padding-left:14px"><strong style="color:var(--color-text)">Belém 4-star design hotels</strong> near the Jerónimos Monastery, flat, spacious, buggy-friendly, easy tram into town; several have kitchenettes.</li>
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-neutral-300);padding-left:14px"><strong style="color:var(--color-text)">Avenida da Liberdade hotels or Baixa apartments</strong>, flat walking, central, close to the airport metro line.</li>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Where to stay</div>
+            <ul class="mt-3.5 p-0 list-none grid gap-3.5">
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-accent pl-3.5"><strong class="text-text">Martinhal Lisbon Chiado Family Suites</strong>, the gold standard. Apartments with kitchens, a proper kids' club including evenings, and a baby concierge that pre-stocks nappies, sterilisers and potties. Expensive; worth it with three under seven.</li>
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-neutral-300 pl-3.5"><strong class="text-text">Belém 4-star design hotels</strong> near the Jerónimos Monastery, flat, spacious, buggy-friendly, easy tram into town; several have kitchenettes.</li>
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-neutral-300 pl-3.5"><strong class="text-text">Avenida da Liberdade hotels or Baixa apartments</strong>, flat walking, central, close to the airport metro line.</li>
             </ul>
           </div>
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Eat like a local</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">Bifanas (pork sandwiches) and caldo verde for the kids; grilled fish and a cherry ginjinha for the adults after. Portuguese kitchens will do plain grilled chicken, rice and soup for children without being asked twice, <em>sopa</em> is the universal Portuguese child-food and it's on every menu.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Eat like a local</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">Bifanas (pork sandwiches) and caldo verde for the kids; grilled fish and a cherry ginjinha for the adults after. Portuguese kitchens will do plain grilled chicken, rice and soup for children without being asked twice, <em>sopa</em> is the universal Portuguese child-food and it's on every menu.</p>
           </div>
         </div>
       </div>
@@ -297,48 +249,48 @@
   </div>
 </section>
 
-<section id="nazare" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px">
-    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
-      <span style="font-family:var(--font-heading);font-weight:900;font-size:14px;color:var(--color-accent)">02</span>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,6.4vw,84px);line-height:0.95;letter-spacing:-0.035em;margin:0">Nazaré</h2>
-      <span style="font-size:16px;font-weight:600;color:var(--color-neutral-700)">Old Portugal by the sea</span>
+<section id="nazare" class="max-w-[1240px] mt-20 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6">
+    <div class="flex items-baseline gap-5 flex-wrap">
+      <span class="font-heading font-black text-sm text-accent">02</span>
+      <h2 class="font-heading font-black text-[clamp(40px,6.4vw,84px)] leading-[0.95] tracking-[-0.035em] m-0">Nazaré</h2>
+      <span class="text-base font-semibold text-neutral-700">Old Portugal by the sea</span>
     </div>
-    <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;margin-top:32px;align-items:start">
-      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">Why · Do<br>Stay · Eat</div>
+    <div class="grid grid-cols-1 gap-5 mt-8 items-start md:grid-cols-[200px_1fr] md:gap-12">
+      <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">Why · Do<br>Stay · Eat</div>
       <div>
-        <p style="font-size:20px;line-height:1.5;font-weight:500;margin:0;max-width:62ch;text-wrap:pretty">Ninety minutes north of Lisbon, a fishing town turned beach town where the traditions are still on the street, not in a museum. There are no blockbuster sights; the town itself is the sight.</p>
-        <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);margin:18px 0 0;max-width:66ch;text-wrap:pretty">Older women still wear the famous layered petticoat skirts, local lore says seven layers, one for each day of the week, a costume born of wives waiting on the beach in the sea wind for the fleet to come home, completed with embroidered aprons, headscarves and chunky gold earrings passed down the generations. On the boardwalk, racks of fish dry in the sun exactly as they have for centuries.</p>
-        <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nazar%C3%A9%20beach%20and%20Ascensor.jpg?width=1600" alt="The beach and the funicular, Nazaré" loading="lazy" style="width:100%;height:clamp(260px,34vw,440px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">The beach and the funicular, Nazaré</figcaption></figure>
+        <p class="text-xl leading-[1.5] font-medium m-0 max-w-[62ch] [text-wrap:pretty]">Ninety minutes north of Lisbon, a fishing town turned beach town where the traditions are still on the street, not in a museum. There are no blockbuster sights; the town itself is the sight.</p>
+        <p class="text-[17px] leading-[1.65] text-neutral-800 mt-[18px] max-w-[66ch] [text-wrap:pretty]">Older women still wear the famous layered petticoat skirts, local lore says seven layers, one for each day of the week, a costume born of wives waiting on the beach in the sea wind for the fleet to come home, completed with embroidered aprons, headscarves and chunky gold earrings passed down the generations. On the boardwalk, racks of fish dry in the sun exactly as they have for centuries.</p>
+        <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nazar%C3%A9%20beach%20and%20Ascensor.jpg?width=1600" alt="The beach and the funicular, Nazaré" loading="lazy" class="w-full h-[clamp(260px,34vw,440px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">The beach and the funicular, Nazaré</figcaption></figure>
 
-        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700);margin:48px 0 0">The anchor activities</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:16px;border-top:2px solid var(--color-text)">
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">The funicular to Sítio</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Running since 1889, the cliff railway climbs from the beach town to the clifftop. Short, thrilling, and the kids will demand to ride it twice. At the top: the Suberco viewpoint, the 14th-century sanctuary church, and the legend of Dom Fuas Roupinho, a 12th-century knight whose horse was saved from galloping off the fog-covered cliff by a vision of the Virgin. Point out the tiny chapel built on the spot; a great story for a six-year-old.</p>
+        <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700 mt-12">The anchor activities</div>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-0 mt-4 border-t-2 border-text">
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">The funicular to Sítio</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Running since 1889, the cliff railway climbs from the beach town to the clifftop. Short, thrilling, and the kids will demand to ride it twice. At the top: the Suberco viewpoint, the 14th-century sanctuary church, and the legend of Dom Fuas Roupinho, a 12th-century knight whose horse was saved from galloping off the fog-covered cliff by a vision of the Virgin. Point out the tiny chapel built on the spot; a great story for a six-year-old.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Praia do Norte and the lighthouse</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The beach where the biggest waves ever surfed break in winter. In summer the giants are asleep, big-wave season is roughly October–March, but the lighthouse fort houses a small surf exhibition with the boards of record-holders, and the clifftop views are spectacular. The 6-year-old will retell the “30-metre wave” story for weeks.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Praia do Norte and the lighthouse</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The beach where the biggest waves ever surfed break in winter. In summer the giants are asleep, big-wave season is roughly October–March, but the lighthouse fort houses a small surf exhibition with the boards of record-holders, and the clifftop views are spectacular. The 6-year-old will retell the “30-metre wave” story for weeks.</p>
           </div>
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">The main beach</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Wide, sandy, gently shelving, lifeguarded, with the classic striped canvas beach tents for hire, one of the most photogenic and toddler-manageable beaches in the country. Mornings are calm; the Atlantic is brisk but June–September is swimmable for hardy children.</p>
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">The main beach</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Wide, sandy, gently shelving, lifeguarded, with the classic striped canvas beach tents for hire, one of the most photogenic and toddler-manageable beaches in the country. Mornings are calm; the Atlantic is brisk but June–September is swimmable for hardy children.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">The morning fish market &amp; en route stops</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Daily catch straight off the boats, small, real, a good warm-up for Olhão's later in the trip. On the drive up from Lisbon: Óbidos, the walled medieval town, for an hour inside the walls, a chocolate cup of ginjinha and castle ramparts (hold hands; no railings). The monasteries of Alcobaça and Batalha are close and both UNESCO-listed if the adults want a culture stop while someone naps in the carrier.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">The morning fish market &amp; en route stops</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Daily catch straight off the boats, small, real, a good warm-up for Olhão's later in the trip. On the drive up from Lisbon: Óbidos, the walled medieval town, for an hour inside the walls, a chocolate cup of ginjinha and castle ramparts (hold hands; no railings). The monasteries of Alcobaça and Batalha are close and both UNESCO-listed if the adults want a culture stop while someone naps in the carrier.</p>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px">
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-10">
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Where to stay</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">Guesthouse-and-apartment territory rather than resort territory, which is the point. Look at seafront apartments along the Avenida da República (fall asleep to the surf), or <strong style="color:var(--color-text)">Hotel Praia</strong>, the town's established seafront four-star, with family rooms. For a quieter night, Sítio at the top of the funicular has small guesthouses with the view.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Where to stay</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">Guesthouse-and-apartment territory rather than resort territory, which is the point. Look at seafront apartments along the Avenida da República (fall asleep to the surf), or <strong class="text-text">Hotel Praia</strong>, the town's established seafront four-star, with family rooms. For a quieter night, Sítio at the top of the funicular has small guesthouses with the view.</p>
           </div>
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Eat like a local</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">Grilled sardines, caldeirada (fish stew), arroz de marisco. The street snack is <strong style="color:var(--color-text)">percebes</strong>, gooseneck barnacles, harvested dangerously from the wave-battered rocks and eaten like boiled clams with a beer. Adults' dare-food; the kids can stick to grilled squid and chips.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Eat like a local</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">Grilled sardines, caldeirada (fish stew), arroz de marisco. The street snack is <strong class="text-text">percebes</strong>, gooseneck barnacles, harvested dangerously from the wave-battered rocks and eaten like boiled clams with a beer. Adults' dare-food; the kids can stick to grilled squid and chips.</p>
           </div>
         </div>
       </div>
@@ -346,56 +298,56 @@
   </div>
 </section>
 
-<section id="porto" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px">
-    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
-      <span style="font-family:var(--font-heading);font-weight:900;font-size:14px;color:var(--color-accent)">03</span>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,6.4vw,84px);line-height:0.95;letter-spacing:-0.035em;margin:0">Porto</h2>
-      <span style="font-size:16px;font-weight:600;color:var(--color-neutral-700)">Bridges, boats and tiles</span>
+<section id="porto" class="max-w-[1240px] mt-20 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6">
+    <div class="flex items-baseline gap-5 flex-wrap">
+      <span class="font-heading font-black text-sm text-accent">03</span>
+      <h2 class="font-heading font-black text-[clamp(40px,6.4vw,84px)] leading-[0.95] tracking-[-0.035em] m-0">Porto</h2>
+      <span class="text-base font-semibold text-neutral-700">Bridges, boats and tiles</span>
     </div>
-    <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;margin-top:32px;align-items:start">
-      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">Why · Do<br>Stay · Eat</div>
+    <div class="grid grid-cols-1 gap-5 mt-8 items-start md:grid-cols-[200px_1fr] md:gap-12">
+      <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">Why · Do<br>Stay · Eat</div>
       <div>
-        <p style="font-size:20px;line-height:1.5;font-weight:500;margin:0;max-width:62ch;text-wrap:pretty">Smaller, grittier and cheaper than Lisbon, with a river at the centre of everything. Porto is not engineered for small children, cobbles, hills, stairs, but it is deeply <em>friendly</em> to them.</p>
-        <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);margin:18px 0 0;max-width:66ch;text-wrap:pretty">Strangers give up tram seats, restaurants improvise children's portions, and the whole riverfront is one long spectacle of boats and bridges. Carrier for the baby: the Ribeira's cobbles will destroy a buggy's suspension and your wrists.</p>
-        <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ponte%20Lu%C3%ADs%20I%20-%20Porto%20-%20Portugal%20(48501818531).jpg?width=1600" alt="The Dom Luís I bridge from the Ribeira" loading="lazy" style="width:100%;height:clamp(260px,34vw,440px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">The Dom Luís I bridge from the Ribeira</figcaption></figure>
+        <p class="text-xl leading-[1.5] font-medium m-0 max-w-[62ch] [text-wrap:pretty]">Smaller, grittier and cheaper than Lisbon, with a river at the centre of everything. Porto is not engineered for small children, cobbles, hills, stairs, but it is deeply <em>friendly</em> to them.</p>
+        <p class="text-[17px] leading-[1.65] text-neutral-800 mt-[18px] max-w-[66ch] [text-wrap:pretty]">Strangers give up tram seats, restaurants improvise children's portions, and the whole riverfront is one long spectacle of boats and bridges. Carrier for the baby: the Ribeira's cobbles will destroy a buggy's suspension and your wrists.</p>
+        <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ponte%20Lu%C3%ADs%20I%20-%20Porto%20-%20Portugal%20(48501818531).jpg?width=1600" alt="The Dom Luís I bridge from the Ribeira" loading="lazy" class="w-full h-[clamp(260px,34vw,440px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">The Dom Luís I bridge from the Ribeira</figcaption></figure>
 
-        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700);margin:48px 0 0">The anchor activities</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:16px;border-top:2px solid var(--color-text)">
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">The Six Bridges cruise on a rabelo</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The single best thing to do in Porto with children. Rabelos are the flat-bottomed wooden boats that carried port barrels downriver for centuries, to a four-year-old they are simply pirate ships. About 50 minutes from the Ribeira or the Gaia side, roughly every 30 minutes from 10am, passing under all six bridges. Around €15 adults, €7 children. Short enough for the 1-year-old, dramatic enough for everyone else.</p>
+        <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700 mt-12">The anchor activities</div>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-0 mt-4 border-t-2 border-text">
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">The Six Bridges cruise on a rabelo</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The single best thing to do in Porto with children. Rabelos are the flat-bottomed wooden boats that carried port barrels downriver for centuries, to a four-year-old they are simply pirate ships. About 50 minutes from the Ribeira or the Gaia side, roughly every 30 minutes from 10am, passing under all six bridges. Around €15 adults, €7 children. Short enough for the 1-year-old, dramatic enough for everyone else.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">The Dom Luís I bridge on foot</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The upper deck is a pedestrian walkway with extraordinary views, a carrier makes this far easier than a pram. Metro trains glide past at arm's length, which is half the entertainment.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">The Dom Luís I bridge on foot</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The upper deck is a pedestrian walkway with extraordinary views, a carrier makes this far easier than a pram. Metro trains glide past at arm's length, which is half the entertainment.</p>
           </div>
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Vila Nova de Gaia riverfront</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The south bank: wide promenade, moored rabelos, and the Teleférico de Gaia cable car down from the bridge's upper deck, another guaranteed kid-win. The port lodges are here, so run split shifts: one parent does a cellar tour and tasting while the other holds down the playground and the ice cream, then swap. The WOW cultural district has family-friendly exhibitions and open courtyards.</p>
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Vila Nova de Gaia riverfront</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The south bank: wide promenade, moored rabelos, and the Teleférico de Gaia cable car down from the bridge's upper deck, another guaranteed kid-win. The port lodges are here, so run split shifts: one parent does a cellar tour and tasting while the other holds down the playground and the ice cream, then swap. The WOW cultural district has family-friendly exhibitions and open courtyards.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">São Bento station</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Twenty thousand azulejo tiles telling Portugal's history like a giant comic strip. Free, five minutes, and worth setting the kids a spotting game, find the horses, find the boats.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">São Bento station</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Twenty thousand azulejo tiles telling Portugal's history like a giant comic strip. Free, five minutes, and worth setting the kids a spotting game, find the horses, find the boats.</p>
           </div>
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">World of Discoveries</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">An indoor, interactive museum of the Age of Exploration with a boat ride through recreated worlds, pitched perfectly at the 4–6 bracket and the best wet-weather card in the city.</p>
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">World of Discoveries</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">An indoor, interactive museum of the Age of Exploration with a boat ride through recreated worlds, pitched perfectly at the 4–6 bracket and the best wet-weather card in the city.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Green space and beach</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Jardins do Palácio de Cristal: peacocks roaming free, huge lawns, river views. Take the vintage tram Line 1 along the river to Foz, where Praia do Molhe's natural rock pools are ideal for small children, the Atlantic is cold year-round, the pools warm up. Matosinhos beach is wide and sandy with famous grilled-fish lunch spots one street back.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Green space and beach</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Jardins do Palácio de Cristal: peacocks roaming free, huge lawns, river views. Take the vintage tram Line 1 along the river to Foz, where Praia do Molhe's natural rock pools are ideal for small children, the Atlantic is cold year-round, the pools warm up. Matosinhos beach is wide and sandy with famous grilled-fish lunch spots one street back.</p>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px">
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-10">
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Where to stay</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">Aparthotels or family rooms around Aliados/Bolhão, flat-ish, central, metro access, or across in Gaia near the riverfront: more space, easier parking, the cable car outside the door. Porto is compact; anywhere within 15 minutes' walk of the river works.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Where to stay</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">Aparthotels or family rooms around Aliados/Bolhão, flat-ish, central, metro access, or across in Gaia near the riverfront: more space, easier parking, the cable car outside the door. Porto is compact; anywhere within 15 minutes' walk of the river works.</p>
           </div>
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Eat like a local</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">A francesinha, Porto's outrageous meat-and-cheese sandwich in beer sauce, for the brave adult; pastéis de nata and fresh bread everywhere. From the boats or Gaia market stalls, look for <strong style="color:var(--color-text)">Broa de Avintes</strong>, the dense dark maize-and-rye bread from the village just upriver, still made the old way. Buy a slab, eat it with cheese and a view.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Eat like a local</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">A francesinha, Porto's outrageous meat-and-cheese sandwich in beer sauce, for the brave adult; pastéis de nata and fresh bread everywhere. From the boats or Gaia market stalls, look for <strong class="text-text">Broa de Avintes</strong>, the dense dark maize-and-rye bread from the village just upriver, still made the old way. Buy a slab, eat it with cheese and a view.</p>
           </div>
         </div>
       </div>
@@ -403,73 +355,73 @@
   </div>
 </section>
 
-<section id="douro" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px">
-    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
-      <span style="font-family:var(--font-heading);font-weight:900;font-size:14px;color:var(--color-accent)">04</span>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,6.4vw,84px);line-height:0.95;letter-spacing:-0.035em;margin:0">The Douro</h2>
-      <span style="font-size:16px;font-weight:600;color:var(--color-neutral-700)">The family house and the slow days</span>
+<section id="douro" class="max-w-[1240px] mt-20 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6">
+    <div class="flex items-baseline gap-5 flex-wrap">
+      <span class="font-heading font-black text-sm text-accent">04</span>
+      <h2 class="font-heading font-black text-[clamp(40px,6.4vw,84px)] leading-[0.95] tracking-[-0.035em] m-0">The Douro</h2>
+      <span class="text-base font-semibold text-neutral-700">The family house and the slow days</span>
     </div>
-    <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;margin-top:32px;align-items:start">
-      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">Why · Do<br>Stay · Eat</div>
+    <div class="grid grid-cols-1 gap-5 mt-8 items-start md:grid-cols-[200px_1fr] md:gap-12">
+      <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">Why · Do<br>Stay · Eat</div>
       <div>
-        <p style="font-size:20px;line-height:1.5;font-weight:500;margin:0;max-width:62ch;text-wrap:pretty">Ninety minutes east of Porto the world goes vertical: terraced vineyards stacked to the sky along a green river. This is where we have the run of the family house, the exhale in the middle of the trip.</p>
-        <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);margin:18px 0 0;max-width:66ch;text-wrap:pretty">The Alto Douro is the world's oldest demarcated wine region (1756) and a UNESCO World Heritage landscape, and, counterintuitively, a wonderful place for small children, because the pace is slow, the quintas are farms as much as wineries, and the river does the entertaining. Pool, barbecue, river mornings, no packing and unpacking.</p>
+        <p class="text-xl leading-[1.5] font-medium m-0 max-w-[62ch] [text-wrap:pretty]">Ninety minutes east of Porto the world goes vertical: terraced vineyards stacked to the sky along a green river. This is where we have the run of the family house, the exhale in the middle of the trip.</p>
+        <p class="text-[17px] leading-[1.65] text-neutral-800 mt-[18px] max-w-[66ch] [text-wrap:pretty]">The Alto Douro is the world's oldest demarcated wine region (1756) and a UNESCO World Heritage landscape, and, counterintuitively, a wonderful place for small children, because the pace is slow, the quintas are farms as much as wineries, and the river does the entertaining. Pool, barbecue, river mornings, no packing and unpacking.</p>
 
-        <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vinhas%20do%20Douro.jpg?width=1800" alt="Terraced vineyards above the Douro" loading="lazy" style="width:100%;height:clamp(260px,32vw,440px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Terraced vineyards above the Douro</figcaption></figure>
+        <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vinhas%20do%20Douro.jpg?width=1800" alt="Terraced vineyards above the Douro" loading="lazy" class="w-full h-[clamp(260px,32vw,440px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Terraced vineyards above the Douro</figcaption></figure>
 
-        <div style="margin:56px 0 0;border-top:2px solid var(--color-text);padding-top:24px">
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Our base</div>
-          <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-top:12px">
-            <h3 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(28px,3.4vw,44px);line-height:1;letter-spacing:-0.025em;margin:0">A Casa do Douro</h3>
-            <div style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);white-space:nowrap">Santa Cruz do Douro · Baião</div>
+        <div class="mt-14 border-t-2 border-text pt-6">
+          <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Our base</div>
+          <div class="grid grid-cols-1 gap-5 items-end mt-3 md:grid-cols-[1fr_auto] md:gap-8">
+            <h3 class="font-heading font-black text-[clamp(28px,3.4vw,44px)] leading-none tracking-[-0.025em] m-0">A Casa do Douro</h3>
+            <div class="text-[13px] tracking-[0.14em] uppercase font-bold text-neutral-700 whitespace-nowrap">Santa Cruz do Douro · Baião</div>
           </div>
-          <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);margin:16px 0 0;max-width:66ch;text-wrap:pretty">The house sits above the river at Santa Cruz do Douro, in the Baião hills roughly an hour east of Porto and the same again short of Régua, which puts the whole valley inside an easy day's driving. It is the reason the middle of this trip is unpacked and slow: cook here, swim here, and treat the quintas, the train and the miradouros as day trips out and back.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:28px;border-top:1px solid var(--color-divider)">
-            <div style="padding:18px 20px 22px 0;border-right:1px solid var(--color-divider)">
-              <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Getting there</div>
-              <p style="font-size:15.5px;line-height:1.6;margin:8px 0 0">Porto airport to the house is about 75 minutes by car on the A4. By train, the Linha do Douro stops at Aregos and Mosteirô on the far bank, both a short drive away.</p>
+          <p class="text-[17px] leading-[1.65] text-neutral-800 mt-4 max-w-[66ch] [text-wrap:pretty]">The house sits above the river at Santa Cruz do Douro, in the Baião hills roughly an hour east of Porto and the same again short of Régua, which puts the whole valley inside an easy day's driving. It is the reason the middle of this trip is unpacked and slow: cook here, swim here, and treat the quintas, the train and the miradouros as day trips out and back.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-0 mt-7 border-t border-divider">
+            <div class="pt-[18px] pr-5 pb-[22px] pl-0 border-r border-divider">
+              <div class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Getting there</div>
+              <p class="text-[15.5px] leading-[1.6] mt-2">Porto airport to the house is about 75 minutes by car on the A4. By train, the Linha do Douro stops at Aregos and Mosteirô on the far bank, both a short drive away.</p>
             </div>
-            <div style="padding:18px 20px 22px;border-right:1px solid var(--color-divider)">
-              <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Day trips from the door</div>
-              <p style="font-size:15.5px;line-height:1.6;margin:8px 0 0">Pinhão and Quinta do Bomfim, the N222 to Régua, Lamego and its staircase, Amarante for the market and the bridge, all inside an hour.</p>
+            <div class="pt-[18px] px-5 pb-[22px] border-r border-divider">
+              <div class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Day trips from the door</div>
+              <p class="text-[15.5px] leading-[1.6] mt-2">Pinhão and Quinta do Bomfim, the N222 to Régua, Lamego and its staircase, Amarante for the market and the bridge, all inside an hour.</p>
             </div>
-            <div style="padding:18px 0 22px 20px">
-              <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">The guest guide</div>
-              <p style="font-size:15.5px;line-height:1.6;margin:8px 0 0">House notes, arrival details and local recommendations. Password protected, ask Jason or Tarisai for the shared password.</p>
-              <a class="btn btn-primary" href="https://douro.goecke.io/" style="margin-top:14px">douro.goecke.io</a>
+            <div class="pt-[18px] pr-0 pb-[22px] pl-5">
+              <div class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">The guest guide</div>
+              <p class="text-[15.5px] leading-[1.6] mt-2">House notes, arrival details and local recommendations. Password protected, ask Jason or Tarisai for the shared password.</p>
+              <a class="inline-flex items-center justify-center gap-1.5 no-underline font-heading font-extrabold text-sm leading-[1.2] text-bg bg-accent hover:bg-accent-600 px-[14px] py-2 mt-3.5" href="https://douro.goecke.io/">douro.goecke.io</a>
             </div>
           </div>
         </div>
 
-        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700);margin:48px 0 0">The anchor activities</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-top:16px;border-top:2px solid var(--color-text)">
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">The Linha do Douro train</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Portugal's most scenic railway, opened in 1887, running from Porto's tile-clad São Bento along the river to Régua, Pinhão and Pocinho. East of Régua the track runs feet from the water. Ride it even if you have the car, under-4s travel free, 4–12 at half fare, and Pinhão's station is itself a sight, wrapped in azulejo panels of vineyard life. June–October the Historic Douro Train, 1920s carriages behind a steam locomotive, runs Régua→Pinhão→Tua and back at weekends: about 3 hours with music and regional treats aboard. Book on cp.pt; sit river-side.</p>
+        <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700 mt-12">The anchor activities</div>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-0 mt-4 border-t-2 border-text">
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">The Linha do Douro train</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Portugal's most scenic railway, opened in 1887, running from Porto's tile-clad São Bento along the river to Régua, Pinhão and Pocinho. East of Régua the track runs feet from the water. Ride it even if you have the car, under-4s travel free, 4–12 at half fare, and Pinhão's station is itself a sight, wrapped in azulejo panels of vineyard life. June–October the Historic Douro Train, 1920s carriages behind a steam locomotive, runs Régua→Pinhão→Tua and back at weekends: about 3 hours with music and regional treats aboard. Book on cp.pt; sit river-side.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">A one-hour rabelo cruise</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">From Pinhão or Régua. The gentle rhythm and the terraces sliding past, a sensory delight for the baby and a proper boat adventure for the older two. One hour is the correct duration with this crew; skip the full-day cruises.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">A one-hour rabelo cruise</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">From Pinhão or Régua. The gentle rhythm and the terraces sliding past, a sensory delight for the baby and a proper boat adventure for the older two. One hour is the correct duration with this crew; skip the full-day cruises.</p>
           </div>
-          <div style="padding:20px 24px 24px 0;border-bottom:1px solid var(--color-divider);border-right:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">A kid-tolerant quinta or two</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Choose estates that are farms first. <strong style="color:var(--color-text)">Quinta do Bomfim (Pinhão)</strong>, the Symington estate, walkable from the station, vineyard walks, picnics among 31 grape varieties, a small museum and a river-terrace restaurant. <strong style="color:var(--color-text)">Quinta da Pacheca (Lamego side)</strong>, grape-stomping, picnics, cooking classes, resident dogs, and rooms inside giant wine barrels the kids will talk about forever. <strong style="color:var(--color-text)">Quinta do Tedo</strong>, small, organic, at the Tedo/Douro confluence; picnics on the point are a local family favourite. Book everything ahead; the good quintas run on appointments.</p>
+          <div class="pt-5 pr-6 pb-6 pl-0 border-b border-divider border-r border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">A kid-tolerant quinta or two</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Choose estates that are farms first. <strong class="text-text">Quinta do Bomfim (Pinhão)</strong>, the Symington estate, walkable from the station, vineyard walks, picnics among 31 grape varieties, a small museum and a river-terrace restaurant. <strong class="text-text">Quinta da Pacheca (Lamego side)</strong>, grape-stomping, picnics, cooking classes, resident dogs, and rooms inside giant wine barrels the kids will talk about forever. <strong class="text-text">Quinta do Tedo</strong>, small, organic, at the Tedo/Douro confluence; picnics on the point are a local family favourite. Book everything ahead; the good quintas run on appointments.</p>
           </div>
-          <div style="padding:20px 0 24px 24px;border-bottom:1px solid var(--color-divider)">
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0;letter-spacing:-0.01em">Roads, steps and viewpoints</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The <strong style="color:var(--color-text)">N222 Régua→Pinhão</strong> is routinely ranked among the most beautiful roads in Europe: twenty-five minutes of oohs, best timed to a nap. In Lamego, the baroque staircase of Nossa Senhora dos Remédios climbs 686 steps of tiled terraces, go as far as small legs allow, then reward everyone with the town's ham-stuffed bôla de Lamego. The two great miradouros are Casal de Loivos and São Leonardo de Galafura: zero effort, maximum photo.</p>
+          <div class="pt-5 pr-0 pb-6 pl-6 border-b border-divider">
+            <h3 class="font-heading font-extrabold text-xl m-0 tracking-[-0.01em]">Roads, steps and viewpoints</h3>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The <strong class="text-text">N222 Régua→Pinhão</strong> is routinely ranked among the most beautiful roads in Europe: twenty-five minutes of oohs, best timed to a nap. In Lamego, the baroque staircase of Nossa Senhora dos Remédios climbs 686 steps of tiled terraces, go as far as small legs allow, then reward everyone with the town's ham-stuffed bôla de Lamego. The two great miradouros are Casal de Loivos and São Leonardo de Galafura: zero effort, maximum photo.</p>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px">
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-10">
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Where to stay</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">The family house is our base, but for everyone else reading: <strong style="color:var(--color-text)">The Vintage House (Pinhão)</strong> for riverfront classic comfort, <strong style="color:var(--color-text)">Quinta da Pacheca's Wine House Hotel</strong> for the barrel rooms, <strong style="color:var(--color-text)">Delfim Douro</strong> and <strong style="color:var(--color-text)">Quinta do Portal</strong> as reliably family-friendly picks, or a casa rural in the villages above the river.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Where to stay</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">The family house is our base, but for everyone else reading: <strong class="text-text">The Vintage House (Pinhão)</strong> for riverfront classic comfort, <strong class="text-text">Quinta da Pacheca's Wine House Hotel</strong> for the barrel rooms, <strong class="text-text">Delfim Douro</strong> and <strong class="text-text">Quinta do Portal</strong> as reliably family-friendly picks, or a casa rural in the villages above the river.</p>
           </div>
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Eat like a local</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">Roast kid (cabrito), posta de vitela, river-fish dishes, and the Douro's olive oil, almonds and oranges. Every serious meal ends with a tawny port for the adults and fruit for the kids, and nobody hurries you.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Eat like a local</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">Roast kid (cabrito), posta de vitela, river-fish dishes, and the Douro's olive oil, almonds and oranges. Every serious meal ends with a tawny port for the adults and fruit for the kids, and nobody hurries you.</p>
           </div>
         </div>
       </div>
@@ -477,83 +429,83 @@
   </div>
 </section>
 
-<section id="algarve" style="max-width:1240px;margin:80px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px">
-    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
-      <span style="font-family:var(--font-heading);font-weight:900;font-size:14px;color:var(--color-accent)">05</span>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,6.4vw,84px);line-height:0.95;letter-spacing:-0.035em;margin:0">Eastern Algarve</h2>
-      <span style="font-size:16px;font-weight:600;color:var(--color-neutral-700)">Olhão, the Ria Formosa and the barrier islands</span>
+<section id="algarve" class="max-w-[1240px] mt-20 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6">
+    <div class="flex items-baseline gap-5 flex-wrap">
+      <span class="font-heading font-black text-sm text-accent">05</span>
+      <h2 class="font-heading font-black text-[clamp(40px,6.4vw,84px)] leading-[0.95] tracking-[-0.035em] m-0">Eastern Algarve</h2>
+      <span class="text-base font-semibold text-neutral-700">Olhão, the Ria Formosa and the barrier islands</span>
     </div>
-    <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;margin-top:32px;align-items:start">
-      <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">Why · Do<br>Stay · Eat</div>
+    <div class="grid grid-cols-1 gap-5 mt-8 items-start md:grid-cols-[200px_1fr] md:gap-12">
+      <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">Why · Do<br>Stay · Eat</div>
       <div>
-        <p style="font-size:20px;line-height:1.5;font-weight:500;margin:0;max-width:62ch;text-wrap:pretty">West of Faro, the Algarve is golf courses and resort towers. East of Faro it is salt pans, orange groves, whitewashed fishing towns, and the Ria Formosa.</p>
-        <p style="font-size:17px;line-height:1.65;color:var(--color-neutral-800);margin:18px 0 0;max-width:66ch;text-wrap:pretty">A 60 km protected lagoon of channels, mudflats and barrier islands, one of the “7 Natural Wonders of Portugal” and the source of 80% of the country's clam exports. This is the traditional Algarve, and Olhão, the largest fishing port in the region, with its cubist Moorish-influenced houses and working waterfront, is its capital.</p>
+        <p class="text-xl leading-[1.5] font-medium m-0 max-w-[62ch] [text-wrap:pretty]">West of Faro, the Algarve is golf courses and resort towers. East of Faro it is salt pans, orange groves, whitewashed fishing towns, and the Ria Formosa.</p>
+        <p class="text-[17px] leading-[1.65] text-neutral-800 mt-[18px] max-w-[66ch] [text-wrap:pretty]">A 60 km protected lagoon of channels, mudflats and barrier islands, one of the “7 Natural Wonders of Portugal” and the source of 80% of the country's clam exports. This is the traditional Algarve, and Olhão, the largest fishing port in the region, with its cubist Moorish-influenced houses and working waterfront, is its capital.</p>
 
-        <div style="display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;margin-top:48px">
+        <div class="grid grid-cols-1 gap-5 items-start mt-12 md:grid-cols-[1fr_300px] md:gap-10">
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Olhão itself</div>
-            <h3 style="font-family:var(--font-heading);font-weight:800;font-size:24px;margin:14px 0 0;letter-spacing:-0.015em">The Mercado Municipal</h3>
-            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:10px 0 0;max-width:62ch">Two handsome twin red-brick market halls (1915) right on the waterfront: one for fish, one for fruit and vegetables. Open Monday–Saturday from 7am, closed Sundays, go <strong style="color:var(--color-text)">early on Saturday</strong>, when the farmers' market spills into the surrounding streets and becomes one of the biggest fresh-produce markets in the Algarve. The fish hall is a free natural-history lesson: octopus, scabbard fish, spider crabs, and vendors who adore small children. Buy dried figs, cheeses, chouriço and a bag of flor de sal from the local salt pans, the souvenir that actually gets used.</p>
-            <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0;max-width:62ch">Moored in front of the market, spot the <strong style="color:var(--color-text)">Caíque Bom Sucesso</strong>, a replica of the fishing boat Olhão's men sailed to Brazil in 1808 to tell the exiled king Napoleon's troops had been driven out; the reward was the town's charter. Great pirate-adjacent story. The waterfront gardens between the market and the ferry pier have shaded playgrounds: the standard pre-boat or post-market decompression stop.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Olhão itself</div>
+            <h3 class="font-heading font-extrabold text-2xl mt-3.5 tracking-[-0.015em]">The Mercado Municipal</h3>
+            <p class="text-base leading-[1.6] text-neutral-800 mt-2.5 max-w-[62ch]">Two handsome twin red-brick market halls (1915) right on the waterfront: one for fish, one for fruit and vegetables. Open Monday–Saturday from 7am, closed Sundays, go <strong class="text-text">early on Saturday</strong>, when the farmers' market spills into the surrounding streets and becomes one of the biggest fresh-produce markets in the Algarve. The fish hall is a free natural-history lesson: octopus, scabbard fish, spider crabs, and vendors who adore small children. Buy dried figs, cheeses, chouriço and a bag of flor de sal from the local salt pans, the souvenir that actually gets used.</p>
+            <p class="text-base leading-[1.6] text-neutral-800 mt-3.5 max-w-[62ch]">Moored in front of the market, spot the <strong class="text-text">Caíque Bom Sucesso</strong>, a replica of the fishing boat Olhão's men sailed to Brazil in 1808 to tell the exiled king Napoleon's troops had been driven out; the reward was the town's charter. Great pirate-adjacent story. The waterfront gardens between the market and the ferry pier have shaded playgrounds: the standard pre-boat or post-market decompression stop.</p>
           </div>
-        <figure class="grayscale" style="margin:0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mercado%20de%20Olhao.JPG?width=1200" alt="The twin red-brick market halls, Olhão" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--color-surface)"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">The Mercado Municipal, Olhão</figcaption></figure>
+        <figure class="grayscale contrast-[1.08] m-0 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mercado%20de%20Olhao.JPG?width=1200" alt="The twin red-brick market halls, Olhão" loading="lazy" class="w-full aspect-[3/4] object-cover block bg-surface"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">The Mercado Municipal, Olhão</figcaption></figure>
         </div>
 
-        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700);margin:56px 0 0">The barrier islands, the whole point</div>
-        <p style="font-size:16px;line-height:1.6;color:var(--color-neutral-800);margin:12px 0 0;max-width:64ch">Car-free, low-rise, white-sand islands between the lagoon and the open Atlantic, all reached by cheap ferries or water taxis from Olhão's pier.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;margin-top:20px;border-top:2px solid var(--color-text)">
-          <div style="padding:18px 20px 22px 0;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Armona</h4>
-            <p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:8px 0 0">15-minute ferry, about €2 each way, pedestrian-only: a village of holiday cottages and sandy lanes. The lagoon-side beaches are shallow, calm and warm, the safest possible swimming for a 1- and 4-year-old, while the ocean side is a wilder walk across the island. Empty in the mornings even in August.</p>
+        <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700 mt-14">The barrier islands, the whole point</div>
+        <p class="text-base leading-[1.6] text-neutral-800 mt-3 max-w-[64ch]">Car-free, low-rise, white-sand islands between the lagoon and the open Atlantic, all reached by cheap ferries or water taxis from Olhão's pier.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-0 mt-5 border-t-2 border-text">
+          <div class="pt-[18px] pr-5 pb-[22px] pl-0 border-r border-divider border-b border-divider">
+            <h4 class="font-heading font-extrabold text-lg m-0">Armona</h4>
+            <p class="text-[15px] leading-[1.55] text-neutral-800 mt-2">15-minute ferry, about €2 each way, pedestrian-only: a village of holiday cottages and sandy lanes. The lagoon-side beaches are shallow, calm and warm, the safest possible swimming for a 1- and 4-year-old, while the ocean side is a wilder walk across the island. Empty in the mornings even in August.</p>
           </div>
-          <div style="padding:18px 20px 22px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Culatra</h4>
-            <p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:8px 0 0">A genuine working fishing community, Portugal's last true island village. Boardwalks, moored boats, and restaurants where the fisherman's family serves the fisherman's catch. Lunch here is the authentic-Algarve moment of the whole trip.</p>
+          <div class="pt-[18px] px-5 pb-[22px] border-r border-divider border-b border-divider">
+            <h4 class="font-heading font-extrabold text-lg m-0">Culatra</h4>
+            <p class="text-[15px] leading-[1.55] text-neutral-800 mt-2">A genuine working fishing community, Portugal's last true island village. Boardwalks, moored boats, and restaurants where the fisherman's family serves the fisherman's catch. Lunch here is the authentic-Algarve moment of the whole trip.</p>
           </div>
-          <div style="padding:18px 20px 22px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Farol</h4>
-            <p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:8px 0 0">Culatra's western tip, named for the working Cabo de Santa Maria lighthouse. A pretty village, a great beach, and the lighthouse photo.</p>
+          <div class="pt-[18px] px-5 pb-[22px] border-r border-divider border-b border-divider">
+            <h4 class="font-heading font-extrabold text-lg m-0">Farol</h4>
+            <p class="text-[15px] leading-[1.55] text-neutral-800 mt-2">Culatra's western tip, named for the working Cabo de Santa Maria lighthouse. A pretty village, a great beach, and the lighthouse photo.</p>
           </div>
-          <div style="padding:18px 0 22px 20px;border-bottom:1px solid var(--color-divider)">
-            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Fuseta</h4>
-            <p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:8px 0 0">The next town east, with a tiny ferry to a spectacular sandbar beach. Bring a parasol, there's no shade.</p>
-          </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:36px">
-          <div style="border-top:1px solid var(--color-divider);padding-top:16px">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">The classic day</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:10px 0 0">A three-island boat tour from Olhão marina, Armona → Culatra → Farol, about 5.5 hours with a long Culatra lunch stop, family discounts common, or self-assemble with scheduled ferries at a toddler's pace, one island per day. Natura Algarve and Passeios Ria Formosa run daily departures; some include a home-cooked fisherman's lunch and onboard binoculars for the flamingos and spoonbills.</p>
-          </div>
-          <div style="border-top:1px solid var(--color-divider);padding-top:16px">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Quinta de Marim</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:10px 0 0">The Ria Formosa Natural Park HQ, 3 km east of Olhão: a flat 3 km trail through salt pans and pine woods, a restored tidal mill, and the recovery centre where the kids can learn about the Portuguese water dog, the curly-coated breed fishermen trained to herd fish into nets and carry messages between boats. Pram-friendly and free-range.</p>
+          <div class="pt-[18px] pr-0 pb-[22px] pl-5 border-b border-divider">
+            <h4 class="font-heading font-extrabold text-lg m-0">Fuseta</h4>
+            <p class="text-[15px] leading-[1.55] text-neutral-800 mt-2">The next town east, with a tiny ferry to a spectacular sandbar beach. Bring a parasol, there's no shade.</p>
           </div>
         </div>
 
-        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700);margin:56px 0 0">Beyond Olhão</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:16px">
-          <div><h4 style="font-family:var(--font-heading);font-weight:800;font-size:17px;margin:0">Tavira</h4><p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:6px 0 0">25 min east, the prettiest town in the Algarve: Roman bridge, castle garden, tiled façades, and the miniature train across the salt flats to Praia do Barril, where the Cemitério das Âncoras, hundreds of rusted anchors from the vanished tuna fleet, planted in the dunes, makes an unforgettable, slightly eerie stop.</p></div>
-          <div><h4 style="font-family:var(--font-heading);font-weight:800;font-size:17px;margin:0">Cacela Velha</h4><p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:6px 0 0">A tiny clifftop hamlet over the lagoon's eastern end; oysters shucked at plastic tables, one of the great views of the south.</p></div>
-          <div><h4 style="font-family:var(--font-heading);font-weight:800;font-size:17px;margin:0">Estoi</h4><p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:6px 0 0">A pink rococo palace and Roman ruins, 15 minutes inland.</p></div>
-          <div><h4 style="font-family:var(--font-heading);font-weight:800;font-size:17px;margin:0">Faro old town</h4><p style="font-size:15px;line-height:1.55;color:var(--color-neutral-800);margin:6px 0 0">The walled Cidade Velha, storks nesting on every chimney, the resident colony is a guaranteed toddler hit.</p></div>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-9">
+          <div class="border-t border-divider pt-4">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">The classic day</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2.5">A three-island boat tour from Olhão marina, Armona → Culatra → Farol, about 5.5 hours with a long Culatra lunch stop, family discounts common, or self-assemble with scheduled ferries at a toddler's pace, one island per day. Natura Algarve and Passeios Ria Formosa run daily departures; some include a home-cooked fisherman's lunch and onboard binoculars for the flamingos and spoonbills.</p>
+          </div>
+          <div class="border-t border-divider pt-4">
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Quinta de Marim</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2.5">The Ria Formosa Natural Park HQ, 3 km east of Olhão: a flat 3 km trail through salt pans and pine woods, a restored tidal mill, and the recovery centre where the kids can learn about the Portuguese water dog, the curly-coated breed fishermen trained to herd fish into nets and carry messages between boats. Pram-friendly and free-range.</p>
+          </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:48px">
+        <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700 mt-14">Beyond Olhão</div>
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6 mt-4">
+          <div><h4 class="font-heading font-extrabold text-[17px] m-0">Tavira</h4><p class="text-[15px] leading-[1.55] text-neutral-800 mt-1.5">25 min east, the prettiest town in the Algarve: Roman bridge, castle garden, tiled façades, and the miniature train across the salt flats to Praia do Barril, where the Cemitério das Âncoras, hundreds of rusted anchors from the vanished tuna fleet, planted in the dunes, makes an unforgettable, slightly eerie stop.</p></div>
+          <div><h4 class="font-heading font-extrabold text-[17px] m-0">Cacela Velha</h4><p class="text-[15px] leading-[1.55] text-neutral-800 mt-1.5">A tiny clifftop hamlet over the lagoon's eastern end; oysters shucked at plastic tables, one of the great views of the south.</p></div>
+          <div><h4 class="font-heading font-extrabold text-[17px] m-0">Estoi</h4><p class="text-[15px] leading-[1.55] text-neutral-800 mt-1.5">A pink rococo palace and Roman ruins, 15 minutes inland.</p></div>
+          <div><h4 class="font-heading font-extrabold text-[17px] m-0">Faro old town</h4><p class="text-[15px] leading-[1.55] text-neutral-800 mt-1.5">The walled Cidade Velha, storks nesting on every chimney, the resident colony is a guaranteed toddler hit.</p></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 mt-12">
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Where to stay</div>
-            <ul style="margin:14px 0 0;padding:0;list-style:none;display:grid;gap:14px">
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-accent);padding-left:14px"><strong style="color:var(--color-text)">Real Marina Hotel &amp; Spa (Olhão)</strong>, the town's five-star anchor, directly on the waterfront facing the Ria Formosa: family rooms with balconies, indoor and outdoor pools, spa, market and island ferries a short walk away. The practical first choice with three children.</li>
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-neutral-300);padding-left:14px"><strong style="color:var(--color-text)">Convento (Olhão)</strong>, a former convent turned B&amp;B around a sunlit courtyard, rooftop plunge pool, in the old town. Design-hotel gorgeous; better for the adults-plus-well-behaved-children days.</li>
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-neutral-300);padding-left:14px"><strong style="color:var(--color-text)">Vila Monte Farm House (Moncarapacho)</strong>, rural luxury 15 min inland: gardens, pools, a kitchen-garden restaurant. The best splurge base in the eastern Algarve for families.</li>
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-neutral-300);padding-left:14px"><strong style="color:var(--color-text)">Casa Modesta (Quatrim)</strong>, award-winning modernist rural house on the lagoon's edge; the architecture-lovers' pick.</li>
-              <li style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);border-left:2px solid var(--color-neutral-300);padding-left:14px"><strong style="color:var(--color-text)">Tavira alternatives</strong>, Ozadi Tavira Hotel (kids' pool, gardens, children's menus, bookable babysitting, 10am–10pm kids' club) or the family-run Colégio Charm House in the centre.</li>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Where to stay</div>
+            <ul class="mt-3.5 p-0 list-none grid gap-3.5">
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-accent pl-3.5"><strong class="text-text">Real Marina Hotel &amp; Spa (Olhão)</strong>, the town's five-star anchor, directly on the waterfront facing the Ria Formosa: family rooms with balconies, indoor and outdoor pools, spa, market and island ferries a short walk away. The practical first choice with three children.</li>
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-neutral-300 pl-3.5"><strong class="text-text">Convento (Olhão)</strong>, a former convent turned B&amp;B around a sunlit courtyard, rooftop plunge pool, in the old town. Design-hotel gorgeous; better for the adults-plus-well-behaved-children days.</li>
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-neutral-300 pl-3.5"><strong class="text-text">Vila Monte Farm House (Moncarapacho)</strong>, rural luxury 15 min inland: gardens, pools, a kitchen-garden restaurant. The best splurge base in the eastern Algarve for families.</li>
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-neutral-300 pl-3.5"><strong class="text-text">Casa Modesta (Quatrim)</strong>, award-winning modernist rural house on the lagoon's edge; the architecture-lovers' pick.</li>
+              <li class="text-[15.5px] leading-[1.6] text-neutral-800 border-l-2 border-neutral-300 pl-3.5"><strong class="text-text">Tavira alternatives</strong>, Ozadi Tavira Hotel (kids' pool, gardens, children's menus, bookable babysitting, 10am–10pm kids' club) or the family-run Colégio Charm House in the centre.</li>
             </ul>
           </div>
           <div>
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-accent-700)">Eat like a local</div>
-            <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:14px 0 0">Olhão is the Algarve's seafood capital: cataplana (the copper clam-shell pot of shellfish and fish), clams à Bulhão Pato, grilled sardines on the quay, tuna in Tavira, and Santa Luzia's octopus, the self-styled octopus capital of Portugal. Vai e Volta in Olhão does the legendary all-you-can-eat grilled fish; Maria Petisca for petiscos. Ice cream negotiations are best conducted along the Avenida da República.</p>
+            <div class="text-xs tracking-[0.16em] uppercase font-bold text-accent-700">Eat like a local</div>
+            <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3.5">Olhão is the Algarve's seafood capital: cataplana (the copper clam-shell pot of shellfish and fish), clams à Bulhão Pato, grilled sardines on the quay, tuna in Tavira, and Santa Luzia's octopus, the self-styled octopus capital of Portugal. Vai e Volta in Olhão does the legendary all-you-can-eat grilled fish; Maria Petisca for petiscos. Ice cream negotiations are best conducted along the Avenida da República.</p>
           </div>
         </div>
       </div>
@@ -561,128 +513,128 @@
   </div>
 </section>
 
-<section id="traditions" style="max-width:1240px;margin:96px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px">
-    <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:-0.03em;margin:0">Traditions &amp; culture primer</h2>
-    <figure class="grayscale" style="margin:32px 0 0;display:grid;gap:10px"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/20190526%20Dried%20Fish%20Nazar%C3%A9%20Portugal%2000886.jpg?width=1800" alt="Fish drying in the sun on the sand, Nazaré" loading="lazy" style="width:100%;height:clamp(260px,32vw,440px);object-fit:cover;display:block"><figcaption style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Fish drying in the sun on the sand, Nazaré</figcaption></figure>
-    <div id="festivals" style="background:var(--color-accent-700);color:#fff;margin-top:32px;padding:36px 40px">
-      <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:800">Whatever month you land in</div>
-      <h3 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,4vw,50px);line-height:1;letter-spacing:-0.03em;margin:14px 0 0">The festival calendar</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:28px">
+<section id="traditions" class="max-w-[1240px] mt-24 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6">
+    <h2 class="font-heading font-black text-[clamp(34px,5vw,64px)] leading-none tracking-[-0.03em] m-0">Traditions &amp; culture primer</h2>
+    <figure class="grayscale contrast-[1.08] mt-8 grid gap-2.5"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/20190526%20Dried%20Fish%20Nazar%C3%A9%20Portugal%2000886.jpg?width=1800" alt="Fish drying in the sun on the sand, Nazaré" loading="lazy" class="w-full h-[clamp(260px,32vw,440px)] object-cover block"><figcaption class="text-xs tracking-[0.14em] uppercase font-bold text-neutral-700">Fish drying in the sun on the sand, Nazaré</figcaption></figure>
+    <div id="festivals" class="bg-accent-700 text-white mt-8 p-6 sm:py-9 sm:px-10">
+      <div class="text-xs tracking-[0.18em] uppercase font-extrabold">Whatever month you land in</div>
+      <h3 class="font-heading font-black text-[clamp(30px,4vw,50px)] leading-none tracking-[-0.03em] mt-3.5">The festival calendar</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-8 mt-7">
         <div>
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:800">Winter</div>
-          <p style="font-size:16px;line-height:1.6;margin:10px 0 0">Christmas lights and nativity scenes in both cities, the Epiphany singing of the Janeiras in January, and Carnaval in February, whose parades in Torres Vedras and Loulé are pure spectacle for a six-year-old.</p>
+          <div class="text-xs tracking-[0.16em] uppercase font-extrabold">Winter</div>
+          <p class="text-base leading-[1.6] mt-2.5">Christmas lights and nativity scenes in both cities, the Epiphany singing of the Janeiras in January, and Carnaval in February, whose parades in Torres Vedras and Loulé are pure spectacle for a six-year-old.</p>
         </div>
         <div>
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:800">Spring</div>
-          <p style="font-size:16px;line-height:1.6;margin:10px 0 0">Holy Week processions in every town, biggest in Braga, orange blossom across the eastern Algarve in April, and the flower carpets and folk dancing of the Festa das Cruzes in early May.</p>
+          <div class="text-xs tracking-[0.16em] uppercase font-extrabold">Spring</div>
+          <p class="text-base leading-[1.6] mt-2.5">Holy Week processions in every town, biggest in Braga, orange blossom across the eastern Algarve in April, and the flower carpets and folk dancing of the Festa das Cruzes in early May.</p>
         </div>
         <div>
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:800">Summer</div>
-          <p style="font-size:16px;line-height:1.6;margin:10px 0 0">The Santos Populares own June: streamers, sardines grilled on the pavement and neighbourhood arraiais for the popular saints. Lisbon's Santo António, 12 to 13 June, brings the Marchas Populares down Avenida da Liberdade and all-night parties in Alfama. Porto's São João, 23 to 24 June, brings squeaky plastic hammers, bonfires, paper balloons and midnight fireworks over the Douro. Coastal towns grill sardines all summer.</p>
+          <div class="text-xs tracking-[0.16em] uppercase font-extrabold">Summer</div>
+          <p class="text-base leading-[1.6] mt-2.5">The Santos Populares own June: streamers, sardines grilled on the pavement and neighbourhood arraiais for the popular saints. Lisbon's Santo António, 12 to 13 June, brings the Marchas Populares down Avenida da Liberdade and all-night parties in Alfama. Porto's São João, 23 to 24 June, brings squeaky plastic hammers, bonfires, paper balloons and midnight fireworks over the Douro. Coastal towns grill sardines all summer.</p>
         </div>
         <div>
-          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:800">Autumn</div>
-          <p style="font-size:16px;line-height:1.6;margin:10px 0 0">The Douro vindima from September into early October, when quintas invite families to pick and stomp grapes, then São Martinho on 11 November for roast chestnuts and new wine, plus the Algarve's late harvest fairs.</p>
+          <div class="text-xs tracking-[0.16em] uppercase font-extrabold">Autumn</div>
+          <p class="text-base leading-[1.6] mt-2.5">The Douro vindima from September into early October, when quintas invite families to pick and stomp grapes, then São Martinho on 11 November for roast chestnuts and new wine, plus the Algarve's late harvest fairs.</p>
         </div>
       </div>
-      <p style="font-size:16px;line-height:1.6;margin:28px 0 0;max-width:80ch;border-top:2px solid rgba(255,255,255,0.45);padding-top:20px">Portuguese festivals are all-ages street events, children are out with their grandparents, and the early evening, 6 to 10pm, is pure family gold before the crowds thicken. If you land in June, buy each child a plastic hammer in Porto: total cost €2, entertainment value infinite. They will also want a manjerico, the little potted basil plant sold with a cheeky love poem on a paper flag.</p>
+      <p class="text-base leading-[1.6] mt-7 max-w-[80ch] border-t-2 border-white/45 pt-5">Portuguese festivals are all-ages street events, children are out with their grandparents, and the early evening, 6 to 10pm, is pure family gold before the crowds thicken. If you land in June, buy each child a plastic hammer in Porto: total cost €2, entertainment value infinite. They will also want a manjerico, the little potted basil plant sold with a cheeky love poem on a paper flag.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;margin-top:40px;border-top:2px solid var(--color-text)">
-      <div style="padding:22px 24px 26px 0;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0">Azulejos</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The blue-and-white tiles are Portugal's national picture book, train stations, churches, ordinary houses. Turn it into a running game: each child photographs their favourite tile in each city and we build a tile album of the trip. Studios in Lisbon and Porto run child-friendly tile-painting workshops, a rainy-day ace and the best souvenir there is.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-0 mt-10 border-t-2 border-text">
+      <div class="pt-[22px] pr-6 pb-[26px] pl-0 border-r border-divider border-b border-divider">
+        <h3 class="font-heading font-extrabold text-xl m-0">Azulejos</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The blue-and-white tiles are Portugal's national picture book, train stations, churches, ordinary houses. Turn it into a running game: each child photographs their favourite tile in each city and we build a tile album of the trip. Studios in Lisbon and Porto run child-friendly tile-painting workshops, a rainy-day ace and the best souvenir there is.</p>
       </div>
-      <div style="padding:22px 24px 26px;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0">Fado, with a caveat</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The melancholic national song form is worth the adults hearing once. Formal fado houses are late and hushed, wrong for this crew, but early-evening free performances happen around Alfama during festival season, and the Fado Museum is short and stroller-accessible.</p>
+      <div class="pt-[22px] px-6 pb-[26px] border-r border-divider border-b border-divider">
+        <h3 class="font-heading font-extrabold text-xl m-0">Fado, with a caveat</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The melancholic national song form is worth the adults hearing once. Formal fado houses are late and hushed, wrong for this crew, but early-evening free performances happen around Alfama during festival season, and the Fado Museum is short and stroller-accessible.</p>
       </div>
-      <div style="padding:22px 0 26px 24px;border-bottom:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0">Fishing culture</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">The through-line of the whole trip: Nazaré's petticoats and drying racks, Porto's rabelos, Olhão's market, Culatra's village. Frame it for the kids as one story, how the Portuguese have always lived from the sea, and every stop becomes a chapter.</p>
+      <div class="pt-[22px] pr-0 pb-[26px] pl-6 border-b border-divider">
+        <h3 class="font-heading font-extrabold text-xl m-0">Fishing culture</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">The through-line of the whole trip: Nazaré's petticoats and drying racks, Porto's rabelos, Olhão's market, Culatra's village. Frame it for the kids as one story, how the Portuguese have always lived from the sea, and every stop becomes a chapter.</p>
       </div>
-      <div style="padding:22px 24px 26px 0;border-right:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0">Food traditions worth naming</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Pastéis de nata, hold a family championship: Belém vs Manteigaria vs the local pastelaria. Bacalhau, salt cod, “365 recipes, one for each day.” Cataplana in the Algarve; francesinha and Broa de Avintes in Porto; percebes in Nazaré; queijadas and travesseiros in Sintra; and the sacred institution of the long Sunday almoço.</p>
+      <div class="pt-[22px] pr-6 pb-[26px] pl-0 border-r border-divider border-b border-divider">
+        <h3 class="font-heading font-extrabold text-xl m-0">Food traditions worth naming</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Pastéis de nata, hold a family championship: Belém vs Manteigaria vs the local pastelaria. Bacalhau, salt cod, “365 recipes, one for each day.” Cataplana in the Algarve; francesinha and Broa de Avintes in Porto; percebes in Nazaré; queijadas and travesseiros in Sintra; and the sacred institution of the long Sunday almoço.</p>
       </div>
-      <div style="padding:22px 24px 26px;border-bottom:1px solid var(--color-divider);grid-column:span 2">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0">The Portuguese and children</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:8px 0 0">Set expectations high: children eat in restaurants at 9pm, waiters entertain babies, pharmacies are superb for any kid ailment, and “não faz mal”, no harm done, is the national response to a dropped glass. It is, honestly, the easiest country in Europe to travel with small children.</p>
+      <div class="pt-[22px] px-6 pb-[26px] border-b border-divider col-span-2">
+        <h3 class="font-heading font-extrabold text-xl m-0">The Portuguese and children</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2">Set expectations high: children eat in restaurants at 9pm, waiters entertain babies, pharmacies are superb for any kid ailment, and “não faz mal”, no harm done, is the national response to a dropped glass. It is, honestly, the easiest country in Europe to travel with small children.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="practical" style="max-width:1240px;margin:96px auto 0;padding:0 32px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start">
-    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700);position:sticky;top:80px">Practical notes<br>for a UK family</div>
+<section id="practical" class="max-w-[1240px] mt-24 mx-auto px-5 sm:px-8">
+  <div class="border-t-2 border-text pt-6 grid grid-cols-1 gap-5 items-start md:grid-cols-[200px_1fr] md:gap-12">
+    <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700 md:sticky md:top-20">Practical notes<br>for a UK family</div>
     <div>
-      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,4vw,50px);line-height:1;letter-spacing:-0.03em;margin:0">Logistics</h2>
-      <div style="margin-top:28px;border-top:1px solid var(--color-divider)">
-        <details style="border-bottom:1px solid var(--color-divider)" open="open">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">Flights<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">Direct UK service to Lisbon (LIS), Porto (OPO) and Faro (FAO) from all major UK airports, BA, TAP, easyJet, Ryanair, Jet2. Open-jaw (into Lisbon or Porto, home from Faro) fits the north–south itinerary and avoids backtracking.</p>
+      <h2 class="font-heading font-black text-[clamp(30px,4vw,50px)] leading-none tracking-[-0.03em] m-0">Logistics</h2>
+      <div class="mt-7 border-t border-divider">
+        <details class="border-b border-divider" open="open">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">Flights<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">Direct UK service to Lisbon (LIS), Porto (OPO) and Faro (FAO) from all major UK airports, BA, TAP, easyJet, Ryanair, Jet2. Open-jaw (into Lisbon or Porto, home from Faro) fits the north–south itinerary and avoids backtracking.</p>
         </details>
-        <details style="border-bottom:1px solid var(--color-divider)">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">Driving<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">A large-boot hire car is essential outside the cities. Three car seats: book them with the car or bring your own, UK/EU-approved seats are valid and airlines carry car seats free. Motorways are excellent and quiet; many use electronic-only tolls, so take the transponder from the hire company. Distances: Lisbon→Nazaré 1.5 hrs; Nazaré→Porto 2 hrs; Porto→Douro (Régua/Pinhão) 1.5–2 hrs via the A4 or the beautiful-but-windy N108/N222; Porto→Faro ~5.5 hrs, fly instead. In cities, ditch the car: park at the hotel and use trams, metros, tuk-tuks and feet.</p>
+        <details class="border-b border-divider">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">Driving<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">A large-boot hire car is essential outside the cities. Three car seats: book them with the car or bring your own, UK/EU-approved seats are valid and airlines carry car seats free. Motorways are excellent and quiet; many use electronic-only tolls, so take the transponder from the hire company. Distances: Lisbon→Nazaré 1.5 hrs; Nazaré→Porto 2 hrs; Porto→Douro (Régua/Pinhão) 1.5–2 hrs via the A4 or the beautiful-but-windy N108/N222; Porto→Faro ~5.5 hrs, fly instead. In cities, ditch the car: park at the hotel and use trams, metros, tuk-tuks and feet.</p>
         </details>
-        <details style="border-bottom:1px solid var(--color-divider)">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">Trains<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">CP (Comboios de Portugal, cp.pt): under-4s free, 4–12 half fare. Lisbon↔Porto by Alfa Pendular is about 3 hrs and genuinely pleasant with kids, buffet car, tables, no car seats needed. The Douro line and the Cascais line are attractions in themselves.</p>
+        <details class="border-b border-divider">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">Trains<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">CP (Comboios de Portugal, cp.pt): under-4s free, 4–12 half fare. Lisbon↔Porto by Alfa Pendular is about 3 hrs and genuinely pleasant with kids, buffet car, tables, no car seats needed. The Douro line and the Cascais line are attractions in themselves.</p>
         </details>
-        <details style="border-bottom:1px solid var(--color-divider)">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">Baby logistics<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">Cobbles plus hills equals carrier for the 1-year-old, lightweight buggy for backup. Supermarkets (Continente, Pingo Doce) stock familiar nappy and formula brands; farmácias are everywhere and excellent. High chairs are standard; baby-change less so outside malls and modern museums, pack a portable mat. June–September sun is serious: UV suits, hats, and the Portuguese habit of the 1–4pm indoor lull.</p>
+        <details class="border-b border-divider">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">Baby logistics<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">Cobbles plus hills equals carrier for the 1-year-old, lightweight buggy for backup. Supermarkets (Continente, Pingo Doce) stock familiar nappy and formula brands; farmácias are everywhere and excellent. High chairs are standard; baby-change less so outside malls and modern museums, pack a portable mat. June–September sun is serious: UV suits, hats, and the Portuguese habit of the 1–4pm indoor lull.</p>
         </details>
-        <details style="border-bottom:1px solid var(--color-divider)">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">The sea<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">The Atlantic is cold and can be rough on the west coast, in Nazaré, swim only on the lifeguarded main beach and respect the flags. The lagoon-side beaches of the Ria Formosa and the eastern Algarve are the warm, calm, shallow ones: that's where the 1-year-old paddles.</p>
+        <details class="border-b border-divider">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">The sea<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">The Atlantic is cold and can be rough on the west coast, in Nazaré, swim only on the lifeguarded main beach and respect the flags. The lagoon-side beaches of the Ria Formosa and the eastern Algarve are the warm, calm, shallow ones: that's where the 1-year-old paddles.</p>
         </details>
-        <details style="border-bottom:1px solid var(--color-divider)">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">Money &amp; timing<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">Portugal remains one of Western Europe's best-value countries; card acceptance is near-universal, but keep coins for ferries and markets. Every season has a case: May, June and September are the sweet spot, warm and festive without peak crowds; July and August work in the eastern Algarve because the barrier islands absorb the crowds that never leave the western resorts; October and November bring the harvest, the warmest sea of the year and far cheaper rooms; and December to March is mild in the south and quiet everywhere, best spent on cities, markets and museums rather than beaches.</p>
+        <details class="border-b border-divider">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">Money &amp; timing<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">Portugal remains one of Western Europe's best-value countries; card acceptance is near-universal, but keep coins for ferries and markets. Every season has a case: May, June and September are the sweet spot, warm and festive without peak crowds; July and August work in the eastern Algarve because the barrier islands absorb the crowds that never leave the western resorts; October and November bring the harvest, the warmest sea of the year and far cheaper rooms; and December to March is mild in the south and quiet everywhere, best spent on cities, markets and museums rather than beaches.</p>
         </details>
-        <details style="border-bottom:1px solid var(--color-divider)">
-          <summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-family:var(--font-heading);font-weight:800;font-size:19px">Language<span data-plus="1" style="color:var(--color-accent);font-weight:600;transition:transform .18s">+</span></summary>
-          <p style="font-size:16px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 22px;max-width:70ch">“Obrigado / obrigada,” “bom dia,” and “uma bica, por favor” open every door. Teach the kids “olá” and watch Portugal melt.</p>
+        <details class="border-b border-divider">
+          <summary class="flex justify-between items-center gap-5 py-[18px] font-heading font-extrabold text-[19px]">Language<span data-plus="1" class="text-accent font-semibold transition-transform duration-[.18s]">+</span></summary>
+          <p class="text-base leading-[1.65] text-neutral-800 mt-0 mb-[22px] max-w-[70ch]">“Obrigado / obrigada,” “bom dia,” and “uma bica, por favor” open every door. Teach the kids “olá” and watch Portugal melt.</p>
         </details>
       </div>
     </div>
   </div>
 </section>
 
-<section id="resources" style="max-width:1240px;margin:96px auto 0;padding:0 32px 96px">
-  <div style="border-top:2px solid var(--color-text);padding-top:24px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start">
-    <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;color:var(--color-neutral-700)">Further reading<br>&amp; resources</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px">
+<section id="resources" class="max-w-[1240px] mt-24 mx-auto px-5 sm:px-8 pb-24">
+  <div class="border-t-2 border-text pt-6 grid grid-cols-1 gap-5 items-start md:grid-cols-[200px_1fr] md:gap-12">
+    <div class="text-xs tracking-[0.16em] uppercase font-bold text-neutral-700">Further reading<br>&amp; resources</div>
+    <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8">
       <div>
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Books</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:10px 0 0"><strong style="color:var(--color-text)">Portugal: The Monocle Handbook</strong> (Thames &amp; Hudson, 2023), Lisbon and Porto insider picks, the Alentejo and Azores, essays on Portuguese design, food and identity. The single best pre-trip purchase for the adults.</p>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:12px 0 0"><strong style="color:var(--color-text)">Rick Steves' Portugal</strong>, practical, family-realistic, particularly strong on Nazaré and the Algarve.</p>
+        <h3 class="font-heading font-extrabold text-lg m-0">Books</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2.5"><strong class="text-text">Portugal: The Monocle Handbook</strong> (Thames &amp; Hudson, 2023), Lisbon and Porto insider picks, the Alentejo and Azores, essays on Portuguese design, food and identity. The single best pre-trip purchase for the adults.</p>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-3"><strong class="text-text">Rick Steves' Portugal</strong>, practical, family-realistic, particularly strong on Nazaré and the Algarve.</p>
       </div>
       <div>
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Links</h3>
-        <ul style="margin:10px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:15.5px;line-height:1.5">
+        <h3 class="font-heading font-extrabold text-lg m-0">Links</h3>
+        <ul class="mt-2.5 p-0 list-none grid gap-2 text-[15.5px] leading-[1.5]">
           <li><a href="https://www.cp.pt">cp.pt</a>, Portuguese Railways: Douro line timetables, Historic Train bookings</li>
           <li><a href="https://www.mercadosdeolhao.pt">mercadosdeolhao.pt</a>, Olhão market hours and events</li>
           <li><a href="https://www.visitportugal.com">visitportugal.com</a>, official tourism portal, festival calendars by month</li>
         </ul>
       </div>
       <div>
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0">Ferries</h3>
-        <p style="font-size:15.5px;line-height:1.6;color:var(--color-neutral-800);margin:10px 0 0">Olhão↔Armona / Culatra / Farol run year-round with expanded summer schedules; buy at the pier kiosks. Hotel names, prices, fares and operators verified July 2026, recheck before you travel.</p>
+        <h3 class="font-heading font-extrabold text-lg m-0">Ferries</h3>
+        <p class="text-[15.5px] leading-[1.6] text-neutral-800 mt-2.5">Olhão↔Armona / Culatra / Farol run year-round with expanded summer schedules; buy at the pier kiosks. Hotel names, prices, fares and operators verified July 2026, recheck before you travel.</p>
       </div>
     </div>
   </div>
 </section>
 
-<footer style="background:var(--color-accent-700);color:#fff">
-  <div style="max-width:1240px;margin:0 auto;padding:72px 32px">
-    <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:800">The national response to a dropped glass</div>
-    <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(52px,11vw,150px);line-height:0.9;letter-spacing:-0.04em;margin:20px 0 0">Não faz mal.</h2>
-    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;border-top:2px solid rgba(255,255,255,0.45);margin-top:44px;padding-top:20px;font-size:13px;letter-spacing:0.04em">
+<footer class="bg-accent-700 text-white">
+  <div class="max-w-[1240px] mx-auto py-12 px-5 sm:py-18 sm:px-8">
+    <div class="text-xs tracking-[0.18em] uppercase font-extrabold">The national response to a dropped glass</div>
+    <h2 class="font-heading font-black text-[clamp(52px,11vw,150px)] leading-[0.9] tracking-[-0.04em] mt-5">Não faz mal.</h2>
+    <div class="flex justify-between gap-8 flex-wrap border-t-2 border-white/45 mt-11 pt-5 text-[13px] tracking-[0.04em]">
       <span>Portugal with the Family · a guide for three small travellers</span>
       <span>Lisbon · Nazaré · Porto · Douro · Olhão</span>
     </div>
